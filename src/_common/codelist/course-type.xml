@@ -5,8 +5,8 @@
     <Identifier>CourseType</Identifier>
     <Version>1.0</Version>
     <Agency>DFO</Agency>
-
-    <!-- cateory: IT -->
+    <!-- tag::CourseType[] -->
+    <!-- category: IT -->
     <Code>
         <Id>java</Id>
         <Name>Java</Name>
@@ -311,5 +311,6 @@
         <Id>marketing</Id>
         <Name>Marketing</Name>
     </Code>
+    <!-- end::CourseType[] -->
 
 </CodeList>

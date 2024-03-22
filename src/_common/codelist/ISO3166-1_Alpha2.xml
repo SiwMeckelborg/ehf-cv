@@ -4,6 +4,7 @@
     <Title>ISO 3166-1:Alpha2 Country codes</Title>
     <Identifier>ISO3166</Identifier>
     <Version>2013</Version>
+    <!-- tag::CountryCodes[] -->
     <Agency>ISO</Agency>
 
     <Code>
@@ -1002,5 +1003,6 @@
         <Id>ZW</Id>
         <Name>Zimbabwe</Name>
     </Code>
+    <!-- end::CountryCodes[] -->
 
 </CodeList>

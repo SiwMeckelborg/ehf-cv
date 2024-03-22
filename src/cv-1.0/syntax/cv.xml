@@ -60,15 +60,68 @@
                 <Description>The Doffin Reference number.</Description>
 
                 <Attribute>
-                <Term>scheme</Term>
-                <Name>Doffin scheme identifier</Name>
+                <Term>schemeID</Term>
+                <Name>DoffinScheme identifier</Name>
                 <Value type="FIXED">DOFFIN</Value>
                 </Attribute>
 
                 <Value type="EXAMPLE">147</Value>
             </Element>
         </Element>
-
+        
+        <Element cardinality="0..1">
+            <Term>cv:SenderParty</Term>
+            <Name>Economic Operator</Name>
+            
+            <Element cardinality="0..1"> <!-- obs obs -->
+                <Term>cv:EndpointID</Term>
+                <Name>Electronic Address Identifier</Name>
+                <Description>The electronic address identifier of the Economic Operator.</Description>
+                <Reference type="RULE">EHF-COMMON-R010</Reference>
+                
+                <Attribute>
+                    <Term>schemeID</Term>
+                    <Name>Scheme identifier</Name>
+                    <Reference type="CODE_LIST">eaid</Reference>
+                    <Value type="EXAMPLE">0192</Value>
+                </Attribute>
+                <Value type="EXAMPLE">987654325</Value>
+            </Element>
+            
+            <Element cardinality="0..1"> <!-- obs obs -->
+                <Term>cv:Name</Term>
+                <Name>Name</Name>
+                <Description>The party name of the Economic Operator.</Description>
+                <Value type="EXAMPLE">Y company</Value>
+            </Element>
+            
+            <Element cardinality="0..1">
+                <Term>cv:Contact</Term>
+                <Name>Contact Information</Name>
+                
+                <Element>
+                    <Term>cv:Name</Term>
+                    <Name>Contact Name</Name>
+                    <Description>Contact person's name.</Description>
+                    <Value type="EXAMPLE">John Johnsen</Value>
+                </Element>
+                
+                <Element cardinality="0..1">
+                    <Term>cv:Telephone</Term>
+                    <Name>Contact Telephone Number</Name>
+                    <Description>Contact person's telephone number.</Description>
+                    <Value type="EXAMPLE">99998888</Value>
+                </Element>
+                
+                <Element>
+                    <Term>cv:ElectronicMail</Term>
+                    <Name>Contact Email Address</Name>
+                    <Description>Contact person's e-mail address.</Description>
+                    <Value type="EXAMPLE">john.johnsen@y.com</Value>
+                </Element>
+            </Element>
+        </Element>
+        
         <Element cardinality="0..1">
             <Term>cv:ReceiverParty</Term>
             <Name>contracting Authority</Name>
@@ -76,11 +129,11 @@
             <Element>
                 <Term>cv:EndpointID</Term>
                 <Name>Electronic Address Identifier</Name>
-                <Description>The electronic address identifier of the contracting authority.</Description>
+                <Description>The electronic address identifier of the Contracting Authority.</Description>
                 <Reference type="RULE">EHF-COMMON-R010</Reference>
 
                 <Attribute>
-                    <Term>scheme</Term>
+                    <Term>schemeID</Term>
                     <Name>Scheme identifier</Name>
                     <Reference type="CODE_LIST">eaid</Reference>
                     <Value type="EXAMPLE">0192</Value>
@@ -91,7 +144,7 @@
             <Element>
                 <Term>cv:Name</Term>
                 <Name>Name</Name>
-                <Description>The name of the contracting authority.</Description>
+                <Description>The name of the Contracting Authority.</Description>
                 <Value type="EXAMPLE">X company</Value>
             </Element>
 
@@ -121,59 +174,73 @@
                 </Element>
             </Element>
         </Element>
-
+       
         <Element cardinality="0..1">
-            <Term>cv:ProviderParty</Term>
-            <Name>Economic operator or the candidate</Name>
+            <Term>cv:PoliceCertificate</Term>
+            <Name>PoliceCertificate requirement</Name>
 
-            <Element cardinality="0..1"> <!-- obs obs -->
-                <Term>cv:EndpointID</Term>
-                <Name>Electronic Address Identifier</Name>
-                <Description>The electronic address identifier of the economic operator or the candidate.</Description>
-                <Reference type="RULE">EHF-COMMON-R010</Reference>
-
-                <Attribute>
-                    <Term>scheme</Term>
-                    <Name>Scheme identifier</Name>
-                    <Reference type="CODE_LIST">eaid</Reference>
-                    <Value type="EXAMPLE">0192</Value>
-                </Attribute>
-                <Value type="EXAMPLE">987654325</Value>
+            <Element>
+                <Term>cv:ID</Term>
+                <Name>Police certificate identifier</Name>
+                <Description>Each line must have an identifier that is unique within the document to make it possible to
+                  positively reference the line. For example, from other documents.</Description>
+                <Value type="EXAMPLE">1</Value>
             </Element>
 
-            <Element cardinality="0..1"> <!-- obs obs -->
-                <Term>cv:Name</Term>
-                <Name>Name</Name>
-                <Description>The party name of the Contracting Authority.</Description>
-                <Value type="EXAMPLE">Y company</Value>
+            <Element>
+                <Term>cv:Type</Term>
+                <Name>Police certificate type</Name>
+                <Description>The type of the certificate.</Description>
+                <Reference type="CODE_LIST">police-certificate</Reference>
+                <Value type="Ordinær">Begrenset</Value>
             </Element>
 
             <Element cardinality="0..1">
-                <Term>cv:Contact</Term>
-                <Name>Contact Information</Name>
+                <Term>cv:ValidTo</Term>
+                <Name>Valid to date</Name>
+                <Description>A date to which the certificate is valid</Description>
+                <Value type="EXAMPLE">2024-12-31</Value>
+            </Element>
 
-                <Element>
-                    <Term>cv:Name</Term>
-                    <Name>Contact Name</Name>
-                    <Description>Contact person's name.</Description>
-                    <Value type="EXAMPLE">John Johnsen</Value>
+            <Element cardinality="0..1">
+                <Term>cv:Documentation</Term>
+                <Name>Educational documentation</Name>
+                <Description>The candidate's educational documentation</Description>
+
+                <Element cardinality="0..1">
+                    <Term>cv:RegistrationType</Term>
+                    <Name>Registration type</Name>
+                    <Description>The type of registration required from EHF CV-request, e.g. HPR-number.</Description>
+                    <Value type="EXAMPLE">HPR</Value>
                 </Element>
 
                 <Element cardinality="0..1">
-                    <Term>cv:Telephone</Term>
-                    <Name>Contact Telephone Number</Name>
-                    <Description>Contact person's telephone number.</Description>
-                    <Value type="EXAMPLE">99998888</Value>
+                    <Term>cv:RegistrationNumber</Term>
+                    <Name>Registration number</Name>
+                    <Description>Specific number of the registration type.</Description>
+                    <Value type="EXAMPLE">154725</Value>
                 </Element>
 
-                <Element>
-                    <Term>cv:ElectronicMail</Term>
-                    <Name>Contact Email Address</Name>
-                    <Description>Contact person's e-mail address.</Description>
-                    <Value type="EXAMPLE">john.johnsen@y.com</Value>
+                <Element cardinality="0..1">
+                    <Term>cv:EmbeddedDocumentBinaryObject</Term>
+                    <Name>Attached document</Name>
+                    <Description>A binary large object containing an attached document. Base 64 encoded.</Description>
+                    <Attribute>
+                        <Term>mimeCode</Term>
+                        <Name>Mime code</Name>
+                        <Reference type="CODE_LIST">MimeCode</Reference>
+                        <Value type="EXAMPLE">application/pdf</Value>
+                    </Attribute>
+                    <Value type="EXAMPLE">bWFzdGVyIG9mIHNjaWVuY2Ugdml0bmVtw6VsCg==</Value>
                 </Element>
-            </Element>
-        </Element>
+
+                <Element cardinality="0..1">
+                    <Term>cv:URI</Term>
+                    <Name>Education documentation URI</Name>
+                    <Description>Education documentation URI reference, e.g. from vitnemålsportalen</Description>
+                    <Value type="EXAMPLE">https://www.vitnemalsportalen.no/</Value>
+                </Element>
+            </Element>        </Element>
 
         <Element cardinality="0..n">
             <Term>cv:Education</Term>
@@ -188,6 +255,14 @@
             </Element>
 
             <Element>
+                <Term>cv:Title</Term>
+                <Name>Education title</Name>
+                <Description>The name of the education.</Description>
+                <Value type="High School">HMS</Value>
+                <Reference type="RULE">EHF-CV-REQ-R001</Reference>
+            </Element>
+
+            <Element cardinality="0..1">
                 <Term>cv:EducationDegree</Term>
                 <Name>Education degree</Name>
                 <Description>The candidate's education degree. Use codelist eduDegree.</Description>
@@ -195,7 +270,7 @@
                 <Value type="EXAMPLE">bachelor</Value>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv:SubjectArea</Term>
                 <Name>Educational Subject Area</Name>
                 <Description>The candidate's educational subject area. Use codelist subArea.</Description>
@@ -388,7 +463,7 @@
                     <Reference type="RULE">EHF-COMMON-R010</Reference>
 
                     <Attribute>
-                        <Term>scheme</Term>
+                        <Term>schemeID</Term>
                         <Name>Scheme identifier</Name>
                         <Reference type="CODE_LIST">eaid</Reference>
                         <Value type="EXAMPLE">0192</Value>
@@ -416,7 +491,7 @@
                 </Element>
 
                 <Element cardinality="0..1">
-                    <Term>cv:Country</Term>
+                    <Term>cv:CountryCode</Term>
                     <Name>Supplier party country</Name>
                     <Description>Supplier party's country of registration.</Description>
                     <Reference type="CODE_LIST">ISO3166</Reference>
@@ -521,7 +596,7 @@
                     <Reference type="RULE">EHF-COMMON-R010</Reference>
 
                     <Attribute>
-                        <Term>scheme</Term>
+                        <Term>schemeID</Term>
                         <Name>Scheme identifier</Name>
                         <Reference type="CODE_LIST">eaid</Reference>
                         <Value type="EXAMPLE">0192</Value>
@@ -549,7 +624,7 @@
                 </Element>
 
                 <Element cardinality="0..1">
-                    <Term>cv:Country</Term>
+                    <Term>cv:CountryCode</Term>
                     <Name>Supplier party country</Name>
                     <Description>Supplier party's country of registration.</Description>
                     <Reference type="CODE_LIST">ISO3166</Reference>
@@ -616,6 +691,13 @@
                 <Description>The specific language. Use code list ISO639.</Description>
                 <Reference type="CODE_LIST">ISO639</Reference>
                 <Value type="EXAMPLE">sq</Value>
+            </Element>
+
+            <Element>
+                <Term>cv:Scandinavian</Term>
+                <Name>Scandinavian</Name>
+                <Description>Set to true if language is no, sv or dk (scandinavian language)</Description>
+                <Value type="EXAMPLE">true</Value>
             </Element>
 
             <Element>
@@ -737,7 +819,7 @@
                     <Reference type="RULE">EHF-COMMON-R010</Reference>
 
                     <Attribute>
-                        <Term>scheme</Term>
+                        <Term>schemeID</Term>
                         <Name>Scheme identifier</Name>
                         <Reference type="CODE_LIST">eaid</Reference>
                         <Value type="EXAMPLE">0192</Value>
@@ -813,18 +895,30 @@
                 <Element>
                     <Term>cv:ProjectParticipation</Term>
                     <Name>Project participation</Name>
-                    <Description>The candidate's project participation, stated as months.</Description>
+                    <Description>The candidate's project participation.</Description>
                     <Value type="EXAMPLE">5</Value>
                     <Reference type="RULE">EHF-CV-R005</Reference>
-                </Element>
+  
+                    <Attribute>
+                        <Term>Uom</Term>
+                        <Name>UnitOfMeasure</Name>
+                        <Value type="EXAMPLE">MON</Value>
+                    </Attribute>
+               </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv:ProjectSize</Term>
                     <Name>Project size</Name>
-                    <Description>The total size of the project, stated as months.</Description>
+                    <Description>The total size of the project.</Description>
                     <Value type="EXAMPLE">5</Value>
                     <Reference type="RULE">EHF-CV-R006</Reference>
-                </Element>
+  
+                    <Attribute>
+                        <Term>Uom</Term>
+                        <Name>UnitOfMeasure</Name>
+                        <Value type="EXAMPLE">MON</Value>
+                    </Attribute>
+               </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv:ProjectValue</Term>
@@ -958,7 +1052,7 @@
                     <Reference type="RULE">EHF-COMMON-R010</Reference>
 
                     <Attribute>
-                        <Term>scheme</Term>
+                        <Term>schemeID</Term>
                         <Name>Scheme identifier</Name>
                         <Reference type="CODE_LIST">eaid</Reference>
                         <Value type="EXAMPLE">0192</Value>
@@ -1203,7 +1297,7 @@
                     <Reference type="RULE">EHF-COMMON-R010</Reference>
 
                     <Attribute>
-                        <Term>scheme</Term>
+                        <Term>schemeID</Term>
                         <Name>Scheme identifier</Name>
                         <Reference type="CODE_LIST">eaid</Reference>
                         <Value type="EXAMPLE">0192</Value>
@@ -1315,6 +1409,12 @@
                 <Description>How long the skill was practiced continously, state the minimum length as months.</Description>
                 <Value type="EXAMPLE">5</Value>
                 <Reference type="RULE">EHF-CV-R010</Reference>
+ 
+                    <Attribute>
+                        <Term>unitOfMeasure</Term>
+                        <Name>Unit of Measure</Name>
+                        <Value type="EXAMPLE">MON</Value>
+                    </Attribute>
             </Element>
 
             <Element cardinality="0..1">
@@ -1513,7 +1613,7 @@
                 </Element>
 
                 <Element cardinality="0..1">
-                    <Term>cv:Country</Term>
+                    <Term>cv:CountryCode</Term>
                     <Name>Country</Name>
 
                     <Element>
