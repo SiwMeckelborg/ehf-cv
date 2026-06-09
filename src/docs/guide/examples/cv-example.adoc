@@ -3,5 +3,5 @@
 Below is a complete example-file for CV.
 [source, xml, indent=0]
 ----
-include::../{example-dir-cv}/cv-example-procurement.xml[tags=Complete]
+include::../{example-dir-cv}/cv-example.xml[tags=Complete]
 ----

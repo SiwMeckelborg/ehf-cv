@@ -72,7 +72,7 @@ include::../../../_common/codelist/styrk98.xml[tags=Styrk98]
 ----
 include::../../../_common/codelist/NACE.xml[tags=Nace]
 ----
-== Classification of Edcuation (NUS)
+== Classification of Education (NUS)
 
 .Codelist NUS
 [source, xml, indent=0]

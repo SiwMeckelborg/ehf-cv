@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- tag::Complete[] -->
 <cv:CV xmlns:cv="urn:fdc:anskaffelser.no:2019:ehf:schema:CV-1">
   <cv:CustomizationID>urn:fdc:anskaffelser.no:2019:ehf:cv:1</cv:CustomizationID>
   <cv:ProfileID>urn:fdc:anskaffelser.no:2019:ehf-cv:1</cv:ProfileID>
-  <cv:ID>1</cv:ID>
-  <cv:Role>Tech-lead</cv:Role>
-  <cv:IssueDate>2024-01-05</cv:IssueDate>
-  <cv:IssueTime>10:30:00</cv:IssueTime>
+  <cv:ID>4b2fd73e-f9c8-4465-8e63-4c5edae48057</cv:ID>
+  <cv:Role>Developer</cv:Role>
+  <cv:IssueDate>2024-02-02</cv:IssueDate>
+  <cv:IssueTime>08:30:00</cv:IssueTime>
+  
   <cv:SenderParty>
-    <cv:Party>
-      <cv:EndpointID schemeID="0192">987654325</cv:EndpointID>
-      <cv:Name>X company</cv:Name>
-      <cv:Contact>
-        <cv:Name>John Johnsen</cv:Name>
-        <cv:Telephone>99998888</cv:Telephone>
-        <cv:ElectronicMail>john.johnsen@x.com</cv:ElectronicMail>
-      </cv:Contact>
+    <cv:Party> 
+    <cv:EndpointID schemeID="0192">987654325</cv:EndpointID>
+    <cv:Name>X company</cv:Name>
+    <cv:Contact>
+      <cv:Name>John Johnsen</cv:Name>
+      <cv:Telephone>99998888</cv:Telephone>
+      <cv:ElectronicMail>john.johnsen@x.com</cv:ElectronicMail>
+    </cv:Contact>
     </cv:Party>
   </cv:SenderParty>
+  
   <cv:ReceiverParty>
-    <cv:Party>
-      <cv:EndpointID schemeID="0192">987654325</cv:EndpointID>
-      <cv:Name>Digitaliseringsdirektoratet</cv:Name>
-      <cv:Contact>
-        <cv:Name>Ola Nordmann</cv:Name>
-        <cv:Telephone>22224444</cv:Telephone>
-        <cv:ElectronicMail>ola.nordmann@direktorat.no</cv:ElectronicMail>
-      </cv:Contact>
+    <cv:Party> 
+    <cv:EndpointID schemeID="0192">987654325</cv:EndpointID>
+    <cv:Name>Digitaliseringsdirektoratet</cv:Name>
+    <cv:Contact>
+      <cv:Name>Ola Nordmann</cv:Name>
+      <cv:Telephone>22224444</cv:Telephone>
+      <cv:ElectronicMail>ola.nordmann@direktorat.no</cv:ElectronicMail>
+    </cv:Contact>
     </cv:Party>
   </cv:ReceiverParty>
+  
   <cv:PoliceCertificate>
     <cv:ID>1</cv:ID>
     <cv:Type>Ordinær</cv:Type>
@@ -37,10 +39,11 @@
       <cv:EmbeddedDocumentBinaryObject mimeCode="application/pdf">YXBwcm92ZWQgZm9vdGJhbGwgcmVmZXJlZSBpbiBub3J3YXk=</cv:EmbeddedDocumentBinaryObject>
     </cv:Documentation>
   </cv:PoliceCertificate>
+
   <cv:Education>
     <cv:ID>1</cv:ID>
     <cv:EducationDegree>6</cv:EducationDegree>
-    <!--    <cv:SubjectArea>661104</cv:SubjectArea>-->
+ <!--   <cv:SubjectArea>661104</cv:SubjectArea>-->
     <cv:Period>
       <cv:StartDate>2018-08-01</cv:StartDate>
       <cv:EndDate>2021-06-30</cv:EndDate>
@@ -56,10 +59,12 @@
       <cv:ElectronicMail>ola.nordmann@x.no</cv:ElectronicMail>
     </cv:Contact>
   </cv:Education>
+
   <cv:Education>
     <cv:ID>2</cv:ID>
+    <cv:Title>Master</cv:Title>
     <cv:EducationDegree>6</cv:EducationDegree>
-    <!--    <cv:SubjectArea>654122</cv:SubjectArea>-->
+<!--    <cv:SubjectArea>654122</cv:SubjectArea>-->
     <cv:Period>
       <cv:StartDate>2017-08-01</cv:StartDate>
       <cv:EndDate>2020-06-30</cv:EndDate>
@@ -75,6 +80,7 @@
       <cv:ElectronicMail>ola.nordmann@y.no</cv:ElectronicMail>
     </cv:Contact>
   </cv:Education>
+
   <cv:Course>
     <cv:ID>1</cv:ID>
     <cv:Title>python</cv:Title>
@@ -84,12 +90,12 @@
     </cv:Period>
     <cv:SupplierParty>
       <cv:Party>
-        <cv:EndpointID schemeID="0192">123456785</cv:EndpointID>
-        <cv:Name>X company</cv:Name>
-        <cv:CountryCode>ES</cv:CountryCode>
-        <cv:Contact>
-          <cv:ElectronicMail>ola.nordmann@xcompany.no</cv:ElectronicMail>
-        </cv:Contact>
+      <cv:EndpointID schemeID="0192">123456785</cv:EndpointID>
+      <cv:Name>X company</cv:Name>
+      <cv:CountryCode>ES</cv:CountryCode>
+      <cv:Contact>
+        <cv:ElectronicMail>ola.nordmann@xcompany.no</cv:ElectronicMail>
+      </cv:Contact>
       </cv:Party>
     </cv:SupplierParty>
     <cv:Documentation>
@@ -97,19 +103,20 @@
       <cv:URI>https://www.kurssportalen.no/</cv:URI>
     </cv:Documentation>
   </cv:Course>
+
   <cv:Certification>
     <cv:ID>1</cv:ID>
     <cv:Title>archimate</cv:Title>
     <cv:Version>3.0</cv:Version>
-        <cv:ValidTo>2050-05-05</cv:ValidTo>
+    <cv:ValidTo>2025-05-05</cv:ValidTo>
     <cv:SupplierParty>
       <cv:Party>
-        <cv:EndpointID schemeID="0192">123456785</cv:EndpointID>
-        <cv:Name>U company</cv:Name>
+     <cv:EndpointID schemeID="0192">123456785</cv:EndpointID>
+      <cv:Name>U company</cv:Name>
         <cv:CountryCode>NO</cv:CountryCode>
-        <cv:Contact>
-          <cv:ElectronicMail>company@u.no</cv:ElectronicMail>
-        </cv:Contact>
+      <cv:Contact>
+        <cv:ElectronicMail>company@u.no</cv:ElectronicMail>
+      </cv:Contact>
       </cv:Party>
     </cv:SupplierParty>
     <cv:Documentation>
@@ -117,6 +124,7 @@
       <cv:URI>https://www.sertifiseringsportalen.no/</cv:URI>
     </cv:Documentation>
   </cv:Certification>
+
   <cv:LanguageSkills>
     <cv:ID>1</cv:ID>
     <cv:Language>no</cv:Language>
@@ -130,13 +138,14 @@
       <cv:ElectronicMail>ola.nordmann@bbb.no</cv:ElectronicMail>
     </cv:Contact>
   </cv:LanguageSkills>
+
   <cv:ProjectExperience>
     <cv:ID>1</cv:ID>
     <cv:ExperienceType>2130111</cv:ExperienceType>
     <cv:Company>
       <cv:Party>
-        <cv:EndpointID schemeID="0192">123456785</cv:EndpointID>
-        <cv:Name>AZ company</cv:Name>
+      <cv:EndpointID schemeID="0192">123456785</cv:EndpointID>
+      <cv:Name>AZ company</cv:Name>
       </cv:Party>
     </cv:Company>
     <cv:Period>
@@ -160,13 +169,14 @@
       <cv:ElectronicMail>ola.nordmann@x-company.no</cv:ElectronicMail>
     </cv:Contact>
   </cv:ProjectExperience>
+
   <cv:WorkExperience>
     <cv:ID>1</cv:ID>
-    <cv:PositionLevel>Managers</cv:PositionLevel>
+    <cv:PositionLevel>1</cv:PositionLevel>
     <cv:Company>
       <cv:Party>
-        <cv:EndpointID schemeID="0192">123456785</cv:EndpointID>
-        <cv:Name>X company</cv:Name>
+      <cv:EndpointID schemeID="0192">123456785</cv:EndpointID>
+      <cv:Name>X company</cv:Name>
       </cv:Party>
     </cv:Company>
     <cv:Period>
@@ -185,10 +195,11 @@
       <cv:ElectronicMail>ola.nordmann@x.no</cv:ElectronicMail>
     </cv:Contact>
   </cv:WorkExperience>
+  
   <cv:Skills>
     <cv:ID>1</cv:ID>
     <cv:Type>java</cv:Type>
-    <!--    <cv:Version>11</cv:Version>-->
+ <!--   <cv:Version>11</cv:Version>-->
     <cv:LastPractice>2020-05-05</cv:LastPractice>
     <cv:MinimumLengthPractice unitOfMeasure="MON">5</cv:MinimumLengthPractice>
     <cv:Contact>
@@ -198,6 +209,7 @@
       <cv:ElectronicMail>ola.nordmann@x.no</cv:ElectronicMail>
     </cv:Contact>
   </cv:Skills>
+
   <cv:Clearance>
     <cv:ID>1</cv:ID>
     <cv:Level>CONFIDENTIAL</cv:Level>
@@ -207,6 +219,7 @@
       <cv:URI>https://www.politiet.no/</cv:URI>
     </cv:Documentation>
   </cv:Clearance>
+
   <cv:PersonalInformation>
     <cv:ID>1</cv:ID>
     <cv:Name>Ola Nordmann</cv:Name>
@@ -221,7 +234,7 @@
       <cv:Telephone>98989898</cv:Telephone>
       <cv:ElectronicMail>ola.nordmann@xxx.no</cv:ElectronicMail>
     </cv:Contact>
-    <!--    <cv:SocialMedia>
+<!--    <cv:SocialMedia>
       <cv:ID>1</cv:ID>
       <cv:Type>linkedin</cv:Type>
       <cv:Documentation>
@@ -229,6 +242,7 @@
       </cv:Documentation>
     </cv:SocialMedia>-->
   </cv:PersonalInformation>
+
   <cv:AdditionalInformation>
     <cv:ID>1</cv:ID>
     <cv:Title>Chairman</cv:Title>
@@ -240,4 +254,4 @@
   </cv:AdditionalInformation>
 
 </cv:CV>
-<!-- end::Complete[] -->
+        <!-- end::Complete[] -->

@@ -2,9 +2,10 @@
 <pattern xmlns="http://purl.oclc.org/dsdl/schematron">
 
   <rule context="cv:Period">
+          <!-- endret til å sjekke at dersom både start og sluttdato er oppgitt, gitt at begge elementene er optional -->
       <assert id="EHF-CV-R001"
-              test="(cv:StartDate) &lt;= (cv:EndDate)"
-              flag="fatal">A period end date shall be later or equal to the period start date.</assert>
+              test="(exists(cv:EndDate) and exists(cv:StartDate) and xs:date(cv:EndDate) >= xs:date(cv:StartDate)) or not(exists(cv:StartDate)) or not(exists(cv:EndDate))"
+              flag="fatal">If both period start date and period end date are given, the period end date shall be later or equal to the period start date.</assert>
   </rule>
 
   <rule context="cv:Course">

@@ -21,7 +21,7 @@
 
   <rule context="cv-req:RequiredTotalExperience ">
       <assert id="EHF-CV-REQ-R004"
-              test="(cv-req:MinimumExperience) &lt; (cv-req:MaximumExperience)"
+              test="(cv-req:MinimumYearsExperience) &lt; (cv-req:MaximumYearsExperience)"
               flag="fatal">Maximum experience must be larger than minimum experience.</assert>
   </rule>
 

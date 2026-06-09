@@ -13,4 +13,5 @@
             test="(string(.) castable as xs:date) and (string-length(.) = 10)"
             flag="fatal">A date must be formatted YYYY-MM-DD.</assert>
     </rule>
+
 </pattern>
