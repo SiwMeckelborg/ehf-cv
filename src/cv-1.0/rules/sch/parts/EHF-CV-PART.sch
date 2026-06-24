@@ -8,7 +8,7 @@
               flag="fatal">If both period start date and period end date are given, the period end date shall be later or equal to the period start date.</assert>
   </rule>
 
-  <rule context="cv:Course">
+<!--  <rule context="cv:Course">
       <assert id="EHF-CV-R002"
               test="(cv:Title) or (cv:Type)"
               flag="fatal">A course shall include either a title or a type.</assert>
@@ -18,7 +18,7 @@
       <assert id="EHF-CV-R003"
               test="(cv:Title) or (cv:Type)"
               flag="fatal">A Certification shall include either a title or a type.</assert>
-  </rule>
+  </rule>-->
 
   <rule context="cv:ExperienceDescription | cv:WorkExperienceDescription">
       <assert id="EHF-CV-R004"
@@ -43,9 +43,9 @@
   </rule>
 
   <rule context="cv:Skills">
-      <assert id="EHF-CV-R009"
+<!--      <assert id="EHF-CV-R009"
               test="(cv:Title) or (cv:Type)"
-              flag="fatal">A skill shall include either a title or a type.</assert>
+              flag="fatal">A skill shall include either a title or a type.</assert>-->
       <assert id="EHF-CV-R010"
               test="(cv:MinimumLengthPractice) &gt;= 0"
               flag="fatal">Minimum length of practice shall be a greater than or equal zero.</assert>

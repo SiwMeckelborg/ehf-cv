@@ -263,7 +263,7 @@
                 <Name>Title</Name>
                 <Description>Education title</Description>
                 <Value type="EXAMPLE">Master</Value>
-                <Reference type="RULE">EHF-CV-REQ-R001</Reference>
+           <!--     <Reference type="RULE">EHF-CV-REQ-R001</Reference>-->
             </Element>
 
             <Element cardinality="0..1">
@@ -357,7 +357,7 @@
                 <Name>Title</Name>
                 <Description>Course title</Description>
                 <Value type="EXAMPLE">Python</Value>
-                <Reference type="RULE">EHF-CV-REQ-R001</Reference>
+               <!-- <Reference type="RULE">EHF-CV-REQ-R001</Reference>-->
             </Element>
 
             <Element cardinality="0..1">
@@ -416,7 +416,7 @@
                     <Name>Title</Name>
                     <Description>Course title</Description>
                     <Value type="EXAMPLE">Python</Value>
-                    <Reference type="RULE">EHF-CV-REQ-R001</Reference>
+                  <!--  <Reference type="RULE">EHF-CV-REQ-R001</Reference>-->
                 </Element>
 
                 <Element cardinality="0..1">
@@ -477,7 +477,7 @@
                 <Name>Title</Name>
                 <Description>Certification title</Description>
                 <Value type="EXAMPLE">archimate</Value>
-                <Reference type="RULE">EHF-CV-REQ-R003</Reference>
+              <!--  <Reference type="RULE">EHF-CV-REQ-R003</Reference>-->
             </Element>
 
             <Element cardinality="0..1">
@@ -520,7 +520,7 @@
                     <Name>Title</Name>
                     <Description>Certification title</Description>
                     <Value type="EXAMPLE">archimate</Value>
-                    <Reference type="RULE">EHF-CV-REQ-R003</Reference>
+                   <!-- <Reference type="RULE">EHF-CV-REQ-R003</Reference>-->
                 </Element>
 
                 <Element cardinality="0..1">
@@ -1125,7 +1125,7 @@
                 <Description>Type of skills</Description>
                 <Reference type="CODE_LIST">SkillsType</Reference>
                 <Value type="EXAMPLE">Java</Value>
-                <Reference type="RULE">EHF-CV-REQ-R011</Reference>
+<!--                <Reference type="RULE">EHF-CV-REQ-R011</Reference>-->
             </Element>
 
             <Element cardinality="0..1">
@@ -1191,7 +1191,7 @@
                     <Description>Type of skills</Description>
                     <Reference type="CODE_LIST">SkillsType</Reference>
                     <Value type="EXAMPLE">Java</Value>
-                    <Reference type="RULE">EHF-CV-REQ-R011</Reference>
+                   <!-- <Reference type="RULE">EHF-CV-REQ-R011</Reference>-->
                 </Element>
 
                 <Element cardinality="0..1">

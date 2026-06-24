@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pattern xmlns="http://purl.oclc.org/dsdl/schematron">
 
-  <rule context="cv-req:Course | cv-req:Course/cv-req:AlternativeCourse">
+<!--  <rule context="cv-req:Course | cv-req:Course/cv-req:AlternativeCourse">
       <assert id="EHF-CV-REQ-R001"
               test="(cv-req:Title) or (cv-req:Type)"
               flag="fatal">A course shall include either a title or a type.</assert>
   </rule>
-
+-->
   <rule context="cv-req:Period">
       <assert id="EHF-CV-REQ-R002"
               test="(cv-req:StartDate) &lt;= (cv-req:EndDate)"
               flag="fatal">A period end date shall be later or equal to the period start date.</assert>
   </rule>
 
-  <rule context="cv-req:Certification | cv-req:AlternativeCertification">
+ <!-- <rule context="cv-req:Certification | cv-req:AlternativeCertification">
       <assert id="EHF-CV-REQ-R003"
               test="(cv-req:Title) or (cv-req:Type)"
               flag="fatal">A Certification shall include either a title or a type.</assert>
-  </rule>
+  </rule>-->
 
   <rule context="cv-req:RequiredTotalExperience ">
       <assert id="EHF-CV-REQ-R004"
-              test="(cv-req:MinimumYearsExperience) &lt; (cv-req:MaximumYearsExperience)"
+              test="number(cv-req:MinimumYearsExperience) &lt; number(cv-req:MaximumYearsExperience)"
               flag="fatal">Maximum experience must be larger than minimum experience.</assert>
   </rule>
 
@@ -47,11 +47,11 @@
               flag="fatal">The project value shall be greater than zero.</assert>
   </rule>
 
-  <rule context="cv-req:Skills | cv-req:AlternativeSkills">
+ <!-- <rule context="cv-req:Skills | cv-req:AlternativeSkills">
       <assert id="EHF-CV-REQ-R011"
               test="(cv-req:Title) or (cv-req:Type)"
               flag="fatal">A skill shall include either a title or a type.</assert>
-  </rule>
+  </rule>-->
 
   <rule context="cv-req:SkillPractice">
       <assert id="EHF-CV-REQ-R012"

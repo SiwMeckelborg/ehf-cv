@@ -112,8 +112,8 @@
     <cv-req:Workplace>CA</cv-req:Workplace>
     <cv-req:JobSector>private</cv-req:JobSector>
     <cv-req:RequiredTotalExperience>
-      <cv-req:MinimumYearsExperience>2</cv-req:MinimumYearsExperience>
-      <cv-req:MaximumYearsExperience>6</cv-req:MaximumYearsExperience>
+      <cv-req:MinimumYearsExperience>6</cv-req:MinimumYearsExperience>
+      <cv-req:MaximumYearsExperience>8</cv-req:MaximumYearsExperience>
     </cv-req:RequiredTotalExperience>
     <cv-req:Period>
       <cv-req:StartDate>2000-01-19</cv-req:StartDate>
