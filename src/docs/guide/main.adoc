@@ -33,8 +33,6 @@ include::process/index.adoc[]
 
 include::description/index.adoc[]
 
-include::codes/index.adoc[]
-
 include::examples/index.adoc[]
 
 include::appendix/index.adoc[]

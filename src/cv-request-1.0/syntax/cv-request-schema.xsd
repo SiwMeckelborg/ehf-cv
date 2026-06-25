@@ -9,8 +9,8 @@
 
     <xs:complexType name="CVRequestType">
         <xs:sequence>
-            <xs:element name="CustomizationID" type="IdentifierType" minOccurs="0"/>
-            <xs:element name="ProfileID" type="IdentifierType" minOccurs="0"/>
+            <xs:element name="CustomizationID" type="IdentifierType"/>
+            <xs:element name="ProfileID" type="IdentifierType"/>
             <xs:element name="ID" type="xs:normalizedString"/>
             <xs:element name="Role" type="xs:string"/>
             <xs:element name="IssueDate" type="xs:date"/>

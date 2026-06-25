@@ -53,7 +53,6 @@
     <cv:ID>1</cv:ID><!--1-->
     <cv:Title>Bachelor</cv:Title><!--2-->
     <cv:EducationDegree>6</cv:EducationDegree><!--3-->
-<!--    <cv:SubjectArea>661104</cv:SubjectArea>-->
     <cv:Period><!--4-->
       <cv:StartDate>2018-08-01</cv:StartDate>
       <cv:EndDate>2021-06-30</cv:EndDate>
@@ -123,7 +122,6 @@
   <cv:Certification>
     <cv:ID>2</cv:ID><!--1-->
     <cv:Title>Svanemerket</cv:Title><!--2-->
- <!--   <cv:Type>Environmental</cv:Type><!-\-3-\->-->
     <cv:SupplierParty><!--4-->
       <cv:Party>
         <cv:EndpointID schemeID="0192">123456785</cv:EndpointID>
@@ -246,39 +244,8 @@
       <cv:EmbeddedDocumentBinaryObject mimeCode="application/pdf">Y2xlYXJhbmNlIGRvY3VtZW50YXRpb24=</cv:EmbeddedDocumentBinaryObject><!--4-->
       <cv:URI>https://www.politiet.no/</cv:URI>
     </cv:Documentation>
-   <!-- <cv:Description>Will be renewed if required</cv:Description><!-\-5-\->-->
   </cv:Clearance>
   <!-- end::Clearance[] -->
-
-  <!-- tag::Reference[] -->
- <!-- <cv:Reference>
-    <cv:ID>1</cv:ID><!-\-1-\->
-    <cv:Party>
-      <cv:EndpointID schemeID="0192">123456785</cv:EndpointID><!-\-2-\->
-      <cv:Name>X school</cv:Name><!-\-3-\->
-    </cv:Party>
-    <cv:Relationship>Math teacher</cv:Relationship><!-\-4-\->
-    <cv:Contact><!-\-5-\->
-      <cv:Name>Ola Nordmann</cv:Name>
-      <cv:Telephone>22441111</cv:Telephone>
-      <cv:ElectronicMail>ola.nordmann@x.no</cv:ElectronicMail>
-    </cv:Contact>
-  </cv:Reference>-->
-  <!-- end::Reference[] -->
-
-
-  <!-- tag::PersonalSkills[] -->
-<!--  <cv:PersonalSkills>
-    <cv:ID>1</cv:ID><!-\-1-\->
-    <cv:Type>listening</cv:Type><!-\-2-\->
-    <cv:Contact><!-\-3-\->
-      <cv:Name>Ola Nordmann</cv:Name>
-      <cv:Role>Colleague</cv:Role>
-      <cv:Telephone>22221111</cv:Telephone>
-      <cv:ElectronicMail>ola.nordmann@x.no</cv:ElectronicMail>
-    </cv:Contact>
-  </cv:PersonalSkills>-->
-  <!-- end::PersonalSkills[] -->
 
   <!-- tag::PersonalInformation[] -->
   <cv:PersonalInformation>
@@ -295,22 +262,8 @@
       <cv:Telephone>98989898</cv:Telephone>
       <cv:ElectronicMail>ola.nordmann@xxx.no</cv:ElectronicMail>
     </cv:Contact>
-<!--    <cv:SocialMedia>
-      <cv:ID>1</cv:ID>
-      <cv:Type>linkedin</cv:Type>
-      <cv:Documentation>
-        <cv:URI>https://www.linkedin.no/xxx</cv:URI>
-      </cv:Documentation>
-    </cv:SocialMedia>-->
   </cv:PersonalInformation>
   <!-- end::PersonalInformation[] -->
-
-  <!-- tag::Interest[] -->
-<!--  <cv:Interest>
-    <cv:ID>1</cv:ID><!-\-1-\->
-    <cv:Description>Interest in playing football.</cv:Description><!-\-2-\->
-  </cv:Interest>-->
-  <!-- end::Interest[] -->
 
   <!-- tag::AdditionalInformation[] -->
   <cv:AdditionalInformation>

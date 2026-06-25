@@ -22,8 +22,8 @@ The element contains information about the last practiced date, the skill practi
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=Skills]
 ----
 <1> Skill identifier
-<2> Skill requirement - indicate whether a candidate needs to fulfill the skill requirement.  According to codelist Requirement code (chapter 5.5).
-<3> Type of skill, see examples below
+<2> Skill requirement - indicate whether a candidate needs to fulfill the skill requirement.  According to codelist Requirement code
+<3> Type of skill
 <4> Last practice date
 <5> Length of practice
 <6> Skills reference to specify the need for a reference person (true or false)
@@ -35,8 +35,8 @@ include::../{snippet-dir-cv-request}/cv-request.xml[tags=Skills]
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=SkillsAlternative]
 ----
 <1> Skill identifier
-<2> Skill requirement - indicate whether a candidate needs to fulfill the skill requirement.  According to codelist Requirement code (chapter 5.11).
-<3> Type of skill, see examples below
+<2> Skill requirement - indicate whether a candidate needs to fulfill the skill requirement.  According to codelist Requirement code
+<3> Type of skill
 <4> Last practice date
 <5> Length of practice
 <6> Skills reference to specify the need for a reference/contact person (true or false)
@@ -54,16 +54,8 @@ The element `cv:Contact` must be used to provide contact information to a refere
 include::../{snippet-dir-cv}/cv.xml[tags=Skills]
 ----
 <1> Skill identifier
-<2> Type of skill, see examples below
+<2> Type of skill
 <3> Last practice date
 <4> Minimum length of practice
 <5> Contact information to reference person
 
-== Examples of skills
-
-The list below gives examples of skills that can be requested.
-
-[source, xml, indent=0]
-----
-include::../../../_common/examples/skills-type.xml[tags=SkillsType]
-----

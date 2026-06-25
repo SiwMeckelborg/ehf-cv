@@ -23,7 +23,7 @@ include::../{snippet-dir-cv-request}/cv-request.xml[tags=Clearance]
 ----
 <1> Clearance identifier
 <2> Clearance requirement - indicate whether a candidate needs to fulfill the clearance requirement.  According to codelist Requirement code (chapter 5.5).
-<3> Clearance level according to codelist Clearance level (chapter 5.1)
+<3> Clearance level according to codelist Clearance level
 <4> Expiration date
 
 
@@ -42,7 +42,7 @@ be done before the job period. Use element `cv:Description`.
 include::../{snippet-dir-cv}/cv.xml[tags=Clearance]
 ----
 <1> Clearance identifier
-<2> Clearance level according to codelist Clearance level (chapter 5.1)
+<2> Clearance level according to codelist Clearance level
 <3> Clearance expiration date
 <4> Embedded document as binary object with `mimeCode`. Use Base64.
 <5> Additional description related to clearance, e.g. if the clearance can be done before the job period if not in place already.

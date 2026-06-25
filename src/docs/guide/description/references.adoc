@@ -30,7 +30,7 @@ For example school teacher, team leader, etc.
 include::../{snippet-dir-cv}/cv.xml[tags=Reference]
 ----
 <1> Reference identifier
-<2> Electronic address identifier. schemeID according to codelist Electronic address identifier (EAID) (chapter 5.11)
+<2> Electronic address identifier. schemeID according to codelist Electronic address identifier (EAID)
 <3> Party name
 <4> Relationship to reference-person, e.g. school teacher, team leader or colleague
 <5> Contact information to reference person

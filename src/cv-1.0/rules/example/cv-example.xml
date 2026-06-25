@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- tag::Complete[] -->
 <cv:CV xmlns:cv="urn:fdc:anskaffelser.no:2019:ehf:schema:CV-1">
   <cv:CustomizationID>urn:fdc:anskaffelser.no:2019:ehf:cv:1</cv:CustomizationID>
   <cv:ProfileID>urn:fdc:anskaffelser.no:2019:ehf-cv:1</cv:ProfileID>

@@ -12,14 +12,14 @@
         <Term>cv-req:CVRequest</Term>
         <Name>CV Request document</Name>
 
-        <Element cardinality="0..1">
+        <Element>
             <Term>cv-req:CustomizationID</Term>
             <Name>Transaction identifier</Name>
             <Description>Identification of the transaction to be used if the message is sent via the Peppol network.</Description>
             <Value type="FIXED">urn:fdc:anskaffelser.no:2019:ehf:cvrequest:1</Value>
         </Element>
 
-        <Element cardinality="0..1">
+        <Element>
             <Term>cv-req:ProfileID</Term>
             <Name>Business process identifier</Name>
             <Description>Identification of the business process to be used if the message is sent via the Peppol network.</Description>
@@ -1229,6 +1229,7 @@
                     <Description>To specify the need for a reference/contact person (true or false)</Description>
                     <Reference type="CODE_LIST">SkillReference</Reference>
                     <Value type="EXAMPLE">true</Value>
+                 
                 </Element>
             </Element>
         </Element>

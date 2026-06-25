@@ -14,14 +14,14 @@
         <Term>cv:CV</Term>
         <Name>CV document</Name>
 
-        <Element cardinality="0..1">
+        <Element>
             <Term>cv:CustomizationID</Term>
             <Name>Document Identifier</Name>
             <Description>Identifies the specification of content and rules that apply to the transaction.</Description>
             <Value type="FIXED">urn:fdc:anskaffelser.no:2019:ehf:cv:1</Value>
         </Element>
 
-        <Element cardinality="0..1">
+        <Element>
             <Term>cv:ProfileID</Term>
             <Name>Process Identifier</Name>
             <Description>Identifies the business process context in which the transaction appears.</Description>
