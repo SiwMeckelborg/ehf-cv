@@ -16,6 +16,7 @@
             <Term>cv-req:CustomizationID</Term>
             <Name>Transaction identifier</Name>
             <Description>Identification of the transaction to be used if the message is sent via the Peppol network.</Description>
+            <DataType>Identifier</DataType>
             <Value type="FIXED">urn:fdc:anskaffelser.no:2019:ehf:cvrequest:1</Value>
         </Element>
 
@@ -23,20 +24,23 @@
             <Term>cv-req:ProfileID</Term>
             <Name>Business process identifier</Name>
             <Description>Identification of the business process to be used if the message is sent via the Peppol network.</Description>
-            <Value type="FIXED">urn:fdc:anskaffelser.no:2019:ehf-cv-req:1</Value>
+            <DataType>Identifier</DataType>
+            <Value type="FIXED">urn:fdc:anskaffelser.no:2019:ehf-cv:1</Value>
         </Element>
 
         <Element>
             <Term>cv-req:ID</Term>
             <Name>Document identification</Name>
             <Description>A unique identification of the CV-request. UUID issued by the sender.</Description>
+            <DataType>Identifier</DataType>
             <Value type="EXAMPLE">405e161f-98a0-4b06-8a24-8c290081a2ea</Value>
         </Element>
 
         <Element>
-            <Term>cv-req:Role</Term>
-            <Name>Role</Name>
+            <Term>cv-req:RoleDescription</Term>
+            <Name>Role description</Name>
             <Description>Description of role or job title that the CV is requested for.</Description>
+            <DataType>Text</DataType>
             <Value type="EXAMPLE">Developer</Value>
         </Element>
 
@@ -44,6 +48,7 @@
             <Term>cv-req:IssueDate</Term>
             <Name>EHF-CV issue date</Name>
             <Description>The date when the CV-request was issued. Format "YYYY-MM-DD"</Description>
+            <DataType>Date</DataType>
             <Value type="EXAMPLE">2024-02-02</Value>
             <Reference type="RULE">EHF-COMMON-R031</Reference>
         </Element>
@@ -52,21 +57,23 @@
             <Term>cv-req:IssueTime</Term>
             <Name>EHF-CV issue time</Name>
             <Description>The time when the CV-request was issued. Format "HH:MM:SS"</Description>
+            <DataType>Time</DataType>
             <Value type="EXAMPLE">10:30:00</Value>
         </Element>
 
         <Element>
             <Term>cv-req:SenderParty</Term>
-            <Name>Sender</Name>
+            <Name>SENDER</Name>
 
             <Element>
                 <Term>cv-req:Party</Term>
-                <Name>Party</Name>
+                <Name>PARTY</Name>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:EndpointID</Term>
                     <Name>Sender electronic address</Name>
                     <Description>Identifies the Sender's electronic address.</Description>
+                    <DataType>Identifier</DataType>
                     <Reference type="RULE">EHF-COMMON-R011</Reference>
 
                     <Attribute>
@@ -80,42 +87,64 @@
                 </Element>
 
                 <Element cardinality="0..1">
-                    <Term>cv-req:Name</Term>
-                    <Name>Party name</Name>
-                    <Description>Name of company sending the CV-request.</Description>
-                    <Value type="EXAMPLE">Digitaliseringsdirektoratet</Value>
+                    <Term>cv-req:PartyName</Term>
+                    <Name>PARTY NAME</Name>
+
+                    <Element>
+                        <Term>cv-req:Name</Term>
+                        <Name>Party name</Name>
+                        <Description>Name of company sending the CV-request.</Description>
+                        <DataType>Text</DataType>
+                        <Value type="EXAMPLE">Digitaliseringsdirektoratet</Value>
+                    </Element>
                 </Element>
 
                 <Element cardinality="0..1">
-                    <Term>cv-req:CountryCode</Term>
-                    <Name>Sender country code</Name>
-                    <Description>A code that identifies the country.</Description>
-                    <Reference type="CODE_LIST">ISO3166</Reference>
-                    <Value type="EXAMPLE">NO</Value>
+                    <Term>cv-req:PostalAddress</Term>
+                    <Name>SENDER POSTAL ADDRESS</Name>
+                    <Description>A group of business terms providing information about the address of the Sender.</Description>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:Country</Term>
+                        <Name>COUNTRY</Name>
+
+                        <Element>
+                            <Term>cv-req:IdentificationCode</Term>
+                            <Name>Sender country code</Name>
+                            <Description>A code that identifies the country. Codes must be according to the ISO 3166-1 alpha-2 representation.</Description>
+                            <DataType>Code</DataType>
+                            <Reference type="CODE_LIST">ISO3166</Reference>
+                            <Value type="EXAMPLE">NO</Value>
+                        </Element>
+                    </Element>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Contact</Term>
-                    <Name>Sender contact person</Name>
+                    <Name>SENDER CONTACT</Name>
 
                     <Element cardinality="0..1">
                         <Term>cv-req:Name</Term>
                         <Name>Sender contact person name</Name>
                         <Description>Name of contact person</Description>
+                        <DataType>Text</DataType>
                         <Value type="EXAMPLE">Ola Nordmann</Value>
                     </Element>
 
                     <Element cardinality="0..1">
                         <Term>cv-req:Role</Term>
                         <Name>Sender contact person role</Name>
-                        <Description>Role of contact person</Description>
-                        <Value type="EXAMPLE">Manager</Value>
+                        <Description>Role of contact person according to code list</Description>
+                        <DataType>Code</DataType>
+                        <Reference type="CODE_LIST">styrk98</Reference>
+                        <Value type="EXAMPLE">1210102</Value>
                     </Element>
 
                     <Element cardinality="0..1">
                         <Term>cv-req:Telephone</Term>
                         <Name>Sender contact telephone number</Name>
                         <Description>A phone number for the contact person</Description>
+                        <DataType>Text</DataType>
                         <Value type="EXAMPLE">22224444</Value>
                     </Element>
 
@@ -123,6 +152,7 @@
                         <Term>cv-req:ElectronicMail</Term>
                         <Name>Sender contact email address</Name>
                         <Description>An e-mail address for the contact person</Description>
+                        <DataType>Text</DataType>
                         <Value type="EXAMPLE">ola.nordmann@digdir.no</Value>
                     </Element>
                 </Element>
@@ -131,16 +161,17 @@
 
         <Element>
             <Term>cv-req:ReceiverParty</Term>
-            <Name>Receiver</Name>
+            <Name>RECEIVER</Name>
 
             <Element>
                 <Term>cv-req:Party</Term>
-                <Name>Party</Name>
+                <Name>PARTY</Name>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:EndpointID</Term>
                     <Name>Receiver electronic address</Name>
                     <Description>Identifies the Receiver's electronic address.</Description>
+                    <DataType>Identifier</DataType>
                     <Reference type="RULE">EHF-COMMON-R011</Reference>
 
                     <Attribute>
@@ -154,42 +185,64 @@
                 </Element>
 
                 <Element cardinality="0..1">
-                    <Term>cv-req:Name</Term>
-                    <Name>Party name</Name>
-                    <Description>Name of company receiving the CV-request.</Description>
-                    <Value type="EXAMPLE">Konsulentselskap</Value>
+                    <Term>cv-req:PartyName</Term>
+                    <Name>PARTY NAME</Name>
+
+                    <Element>
+                        <Term>cv-req:Name</Term>
+                        <Name>Party name</Name>
+                        <Description>Name of company receiving the CV-request.</Description>
+                        <DataType>Text</DataType>
+                        <Value type="EXAMPLE">Konsulentselskap</Value>
+                    </Element>
                 </Element>
 
                 <Element cardinality="0..1">
-                    <Term>cv-req:CountryCode</Term>
-                    <Name>Receiver country code</Name>
-                    <Description>A code that identifies the country.</Description>
-                    <Reference type="CODE_LIST">ISO3166</Reference>
-                    <Value type="EXAMPLE">NO</Value>
+                    <Term>cv-req:PostalAddress</Term>
+                    <Name>RECEIVER POSTAL ADDRESS</Name>
+                    <Description>A group of business terms providing information about the address of the Receiver.</Description>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:Country</Term>
+                        <Name>COUNTRY</Name>
+
+                        <Element>
+                            <Term>cv-req:IdentificationCode</Term>
+                            <Name>Receiver country code</Name>
+                            <Description>A code that identifies the country. Codes must be according to the ISO 3166-1 alpha-2 representation.</Description>
+                            <DataType>Code</DataType>
+                            <Reference type="CODE_LIST">ISO3166</Reference>
+                            <Value type="EXAMPLE">NO</Value>
+                        </Element>
+                    </Element>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Contact</Term>
-                    <Name>Receiver contact person</Name>
+                    <Name>RECEIVER CONTACT</Name>
 
                     <Element cardinality="0..1">
                         <Term>cv-req:Name</Term>
                         <Name>Receiver contact person name</Name>
                         <Description>Name of contact person</Description>
+                        <DataType>Text</DataType>
                         <Value type="EXAMPLE">Jon Jonsen</Value>
                     </Element>
 
                     <Element cardinality="0..1">
                         <Term>cv-req:Role</Term>
                         <Name>Receiver contact person role</Name>
-                        <Description>Role of contact person</Description>
-                        <Value type="EXAMPLE">Account Manager</Value>
+                        <Description>Role of contact person according to code list</Description>
+                        <DataType>Code</DataType>
+                        <Reference type="CODE_LIST">styrk98</Reference>
+                        <Value type="EXAMPLE">1210102</Value>
                     </Element>
 
                     <Element cardinality="0..1">
                         <Term>cv-req:Telephone</Term>
                         <Name>Receiver contact telephone number</Name>
                         <Description>A phone number for the contact person</Description>
+                        <DataType>Text</DataType>
                         <Value type="EXAMPLE">99998888</Value>
                     </Element>
 
@@ -197,6 +250,7 @@
                         <Term>cv-req:ElectronicMail</Term>
                         <Name>Receiver contact email address</Name>
                         <Description>An e-mail address for the contact person</Description>
+                        <DataType>Text</DataType>
                         <Value type="EXAMPLE">jon.jonsen@selskap.no</Value>
                     </Element>
                 </Element>
@@ -211,6 +265,7 @@
                 <Term>cv-req:ID</Term>
                 <Name>Identification</Name>
                 <Description>ID for Police certificate</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
@@ -218,6 +273,7 @@
                 <Term>cv-req:Requirement</Term>
                 <Name>Requirement</Name>
                 <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
                 <Value type="EXAMPLE">must</Value>
             </Element>
@@ -226,6 +282,7 @@
                 <Term>cv-req:Type</Term>
                 <Name>Type</Name>
                 <Description>Type of Police certificate</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">police-certificate</Reference>
                 <Value type="EXAMPLE">Begrenset</Value>
             </Element>
@@ -234,6 +291,7 @@
                 <Term>cv-req:ValidTo</Term>
                 <Name>Valid to date</Name>
                 <Description>The date when the Police certificate is valid to. Format "YYYY-MM-DD"</Description>
+                <DataType>Date</DataType>
                 <Value type="EXAMPLE">2024-12-31</Value>
                 <Reference type="RULE">EHF-COMMON-R031</Reference>
             </Element>
@@ -247,6 +305,7 @@
                 <Term>cv-req:ID</Term>
                 <Name>Identification</Name>
                 <Description>ID for Education</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
@@ -254,6 +313,7 @@
                 <Term>cv-req:Requirement</Term>
                 <Name>Requirement</Name>
                 <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
                 <Value type="EXAMPLE">should</Value>
             </Element>
@@ -262,35 +322,38 @@
                 <Term>cv-req:Title</Term>
                 <Name>Title</Name>
                 <Description>Education title</Description>
+                <DataType>Text</DataType>
                 <Value type="EXAMPLE">Master</Value>
-           <!--     <Reference type="RULE">EHF-CV-REQ-R001</Reference>-->
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:EducationDegree</Term>
                 <Name>Education degree</Name>
-                <Description>Education degree</Description>
+                <Description>Education degree according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">EducationDegree</Reference>
                 <Value type="EXAMPLE">7</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:RelevantExperience</Term>
-                <Name>Relevant experience</Name>
+                <Name>RELEVANT EXPERIENCE</Name>
                 <Description>Relevant experience as alternative to education</Description>
 
                 <Element>
                     <Term>cv-req:Type</Term>
                     <Name>Type</Name>
-                    <Description>Type of experience</Description>
+                    <Description>Type of experience according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">styrk98</Reference>
-                    <Value type="EXAMPLE">1</Value>
+                    <Value type="EXAMPLE">3120127</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:MinYear</Term>
                     <Name>Minimum years</Name>
                     <Description>Minimum years of experience</Description>
+                    <DataType>Numeric</DataType>
                     <Value type="EXAMPLE">5</Value>
                 </Element>
             </Element>
@@ -304,6 +367,7 @@
                     <Term>cv-req:ID</Term>
                     <Name>Identification</Name>
                     <Description>ID for Education</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">1</Value>
                 </Element>
 
@@ -311,6 +375,7 @@
                     <Term>cv-req:Requirement</Term>
                     <Name>Requirement</Name>
                     <Description>Legal values: must or should</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">requirement</Reference>
                     <Value type="EXAMPLE">must</Value>
                 </Element>
@@ -319,13 +384,15 @@
                     <Term>cv-req:Title</Term>
                     <Name>Title</Name>
                     <Description>Education title</Description>
+                    <DataType>Text</DataType>
                     <Value type="EXAMPLE">Bachelor</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:EducationDegree</Term>
                     <Name>Education degree</Name>
-                    <Description>Education degree</Description>
+                    <Description>Education degree according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">EducationDegree</Reference>
                     <Value type="EXAMPLE">6</Value>
                 </Element>
@@ -341,6 +408,7 @@
                 <Term>cv-req:ID</Term>
                 <Name>Identification</Name>
                 <Description>ID for Course</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
@@ -348,6 +416,7 @@
                 <Term>cv-req:Requirement</Term>
                 <Name>Requirement</Name>
                 <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
                 <Value type="EXAMPLE">should</Value>
             </Element>
@@ -356,26 +425,28 @@
                 <Term>cv-req:Title</Term>
                 <Name>Title</Name>
                 <Description>Course title</Description>
-                <Value type="EXAMPLE">Python</Value>
-               <!-- <Reference type="RULE">EHF-CV-REQ-R001</Reference>-->
+                <DataType>Text</DataType>
+                <Value type="EXAMPLE">python</Value>
             </Element>
 
             <Element cardinality="0..1">
-                <Term>cv-req:Version</Term>
+                <Term>cv-req:VersionID</Term>
                 <Name>Version</Name>
                 <Description>Version of course</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">3.0</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:Period</Term>
-                <Name>Period</Name>
+                <Name>PERIOD</Name>
                 <Description>Period for the course</Description>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:StartDate</Term>
                     <Name>Start date</Name>
                     <Description>The start of the Course period. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
                     <Value type="EXAMPLE">2023-01-10</Value>
                     <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                     <Reference type="RULE">EHF-COMMON-R031</Reference>
@@ -385,6 +456,7 @@
                     <Term>cv-req:EndDate</Term>
                     <Name>End date</Name>
                     <Description>The end of the Course period. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
                     <Value type="EXAMPLE">2024-05-05</Value>
                     <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                     <Reference type="RULE">EHF-COMMON-R031</Reference>
@@ -400,6 +472,7 @@
                     <Term>cv-req:ID</Term>
                     <Name>Identification</Name>
                     <Description>ID for Course</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">1</Value>
                 </Element>
 
@@ -407,6 +480,7 @@
                     <Term>cv-req:Requirement</Term>
                     <Name>Requirement</Name>
                     <Description>Legal values: must or should</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">requirement</Reference>
                     <Value type="EXAMPLE">should</Value>
                 </Element>
@@ -415,26 +489,28 @@
                     <Term>cv-req:Title</Term>
                     <Name>Title</Name>
                     <Description>Course title</Description>
-                    <Value type="EXAMPLE">Python</Value>
-                  <!--  <Reference type="RULE">EHF-CV-REQ-R001</Reference>-->
+                    <DataType>Text</DataType>
+                    <Value type="EXAMPLE">python</Value>
                 </Element>
 
                 <Element cardinality="0..1">
-                    <Term>cv-req:Version</Term>
+                    <Term>cv-req:VersionID</Term>
                     <Name>Version</Name>
                     <Description>Version of course</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">2.0</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Period</Term>
-                    <Name>Period</Name>
+                    <Name>PERIOD</Name>
                     <Description>Period for the course</Description>
 
                     <Element cardinality="0..1">
                         <Term>cv-req:StartDate</Term>
                         <Name>Start date</Name>
                         <Description>The start of the Course period. Format "YYYY-MM-DD"</Description>
+                        <DataType>Date</DataType>
                         <Value type="EXAMPLE">2023-01-10</Value>
                         <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                         <Reference type="RULE">EHF-COMMON-R031</Reference>
@@ -444,6 +520,7 @@
                         <Term>cv-req:EndDate</Term>
                         <Name>End date</Name>
                         <Description>The end of the Course period. Format "YYYY-MM-DD"</Description>
+                        <DataType>Date</DataType>
                         <Value type="EXAMPLE">2024-05-05</Value>
                         <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                         <Reference type="RULE">EHF-COMMON-R031</Reference>
@@ -461,6 +538,7 @@
                 <Term>cv-req:ID</Term>
                 <Name>Identification</Name>
                 <Description>ID for Certification</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
@@ -468,6 +546,7 @@
                 <Term>cv-req:Requirement</Term>
                 <Name>Requirement</Name>
                 <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
                 <Value type="EXAMPLE">should</Value>
             </Element>
@@ -476,14 +555,15 @@
                 <Term>cv-req:Title</Term>
                 <Name>Title</Name>
                 <Description>Certification title</Description>
+                <DataType>Text</DataType>
                 <Value type="EXAMPLE">archimate</Value>
-              <!--  <Reference type="RULE">EHF-CV-REQ-R003</Reference>-->
             </Element>
 
             <Element cardinality="0..1">
-                <Term>cv-req:Version</Term>
+                <Term>cv-req:VersionID</Term>
                 <Name>Version</Name>
                 <Description>Version of certification</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">3.0</Value>
             </Element>
 
@@ -491,6 +571,7 @@
                 <Term>cv-req:ValidTo</Term>
                 <Name>Valid to</Name>
                 <Description>Valid to date. Format "YYYY-MM-DD"</Description>
+                <DataType>Date</DataType>
                 <Value type="EXAMPLE">2030-12-31</Value>
                 <Reference type="RULE">EHF-COMMON-R031</Reference>
             </Element>
@@ -504,6 +585,7 @@
                     <Term>cv-req:ID</Term>
                     <Name>Identification</Name>
                     <Description>ID for Certification</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">1</Value>
                 </Element>
 
@@ -511,6 +593,7 @@
                     <Term>cv-req:Requirement</Term>
                     <Name>Requirement</Name>
                     <Description>Legal values: must or should</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">requirement</Reference>
                     <Value type="EXAMPLE">must</Value>
                 </Element>
@@ -519,14 +602,15 @@
                     <Term>cv-req:Title</Term>
                     <Name>Title</Name>
                     <Description>Certification title</Description>
+                    <DataType>Text</DataType>
                     <Value type="EXAMPLE">archimate</Value>
-                   <!-- <Reference type="RULE">EHF-CV-REQ-R003</Reference>-->
                 </Element>
 
                 <Element cardinality="0..1">
-                    <Term>cv-req:Version</Term>
+                    <Term>cv-req:VersionID</Term>
                     <Name>Version</Name>
                     <Description>Version of certification</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">2.0</Value>
                 </Element>
 
@@ -534,12 +618,12 @@
                     <Term>cv-req:ValidTo</Term>
                     <Name>Valid to</Name>
                     <Description>Valid to date. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
                     <Value type="EXAMPLE">2030-12-31</Value>
                     <Reference type="RULE">EHF-COMMON-R031</Reference>
                 </Element>
             </Element>
         </Element>
-
 
         <Element cardinality="0..n">
             <Term>cv-req:LanguageSkills</Term>
@@ -550,6 +634,7 @@
                 <Term>cv-req:ID</Term>
                 <Name>Identification</Name>
                 <Description>ID for Language skills</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
@@ -557,6 +642,7 @@
                 <Term>cv-req:Requirement</Term>
                 <Name>Requirement</Name>
                 <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
                 <Value type="EXAMPLE">should</Value>
             </Element>
@@ -564,7 +650,8 @@
             <Element cardinality="0..1">
                 <Term>cv-req:Language</Term>
                 <Name>Language</Name>
-                <Description>Language</Description>
+                <Description>Language according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">ISO639</Reference>
                 <Value type="EXAMPLE">no</Value>
             </Element>
@@ -572,7 +659,8 @@
             <Element cardinality="0..1">
                 <Term>cv-req:Scandinavian</Term>
                 <Name>Scandinavian</Name>
-                <Description>Scandinavian. True or False</Description>
+                <Description>Scandinavian. true or false</Description>
+                <DataType>Indicator</DataType>
                 <Value type="EXAMPLE">true</Value>
             </Element>
 
@@ -580,6 +668,7 @@
                 <Term>cv-req:OralSkill</Term>
                 <Name>Oral skill</Name>
                 <Description>Level of oral skill according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">LanguageLevel</Reference>
                 <Value type="EXAMPLE">C1</Value>
             </Element>
@@ -588,6 +677,7 @@
                 <Term>cv-req:WrittenSkill</Term>
                 <Name>Written skill</Name>
                 <Description>Level of written skill according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">LanguageLevel</Reference>
                 <Value type="EXAMPLE">C1</Value>
             </Element>
@@ -601,6 +691,7 @@
                     <Term>cv-req:ID</Term>
                     <Name>Identification</Name>
                     <Description>ID for Language skills</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">1</Value>
                 </Element>
 
@@ -608,6 +699,7 @@
                     <Term>cv-req:Requirement</Term>
                     <Name>Requirement</Name>
                     <Description>Legal values: must or should</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">requirement</Reference>
                     <Value type="EXAMPLE">must</Value>
                 </Element>
@@ -615,7 +707,8 @@
                 <Element cardinality="0..1">
                     <Term>cv-req:Language</Term>
                     <Name>Language</Name>
-                    <Description>Language</Description>
+                    <Description>Language according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">ISO639</Reference>
                     <Value type="EXAMPLE">no</Value>
                 </Element>
@@ -623,7 +716,8 @@
                 <Element cardinality="0..1">
                     <Term>cv-req:Scandinavian</Term>
                     <Name>Scandinavian</Name>
-                    <Description>Scandinavian. True or False</Description>
+                    <Description>Scandinavian. true or false</Description>
+                    <DataType>Indicator</DataType>
                     <Value type="EXAMPLE">true</Value>
                 </Element>
 
@@ -631,6 +725,7 @@
                     <Term>cv-req:OralSkill</Term>
                     <Name>Oral skill</Name>
                     <Description>Level of oral skill according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">LanguageLevel</Reference>
                     <Value type="EXAMPLE">B1</Value>
                 </Element>
@@ -639,6 +734,7 @@
                     <Term>cv-req:WrittenSkill</Term>
                     <Name>Written skill</Name>
                     <Description>Level of written skill according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">LanguageLevel</Reference>
                     <Value type="EXAMPLE">B1</Value>
                 </Element>
@@ -654,6 +750,7 @@
                 <Term>cv-req:ID</Term>
                 <Name>Identification</Name>
                 <Description>ID for project experience</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
@@ -661,6 +758,7 @@
                 <Term>cv-req:Requirement</Term>
                 <Name>Requirement</Name>
                 <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
                 <Value type="EXAMPLE">should</Value>
             </Element>
@@ -669,6 +767,7 @@
                 <Term>cv-req:ExperienceType</Term>
                 <Name>Experience type</Name>
                 <Description>Type of project experience according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">styrk98</Reference>
                 <Value type="EXAMPLE">2130111</Value>
             </Element>
@@ -677,6 +776,7 @@
                 <Term>cv-req:IndustryType</Term>
                 <Name>Industry type</Name>
                 <Description>Type of industry according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">NACE</Reference>
                 <Value type="EXAMPLE">01110</Value>
             </Element>
@@ -685,6 +785,7 @@
                 <Term>cv-req:Workplace</Term>
                 <Name>Work place</Name>
                 <Description>Country code according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">ISO3166</Reference>
                 <Value type="EXAMPLE">FR</Value>
             </Element>
@@ -692,20 +793,22 @@
             <Element cardinality="0..1">
                 <Term>cv-req:JobSector</Term>
                 <Name>Job sector</Name>
-                <Description>Private, public or other</Description>
+                <Description>Private, public or other according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">sector</Reference>
-                <Value type="EXAMPLE">Private</Value>
+                <Value type="EXAMPLE">private</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:RequiredTotalExperience</Term>
-                <Name>Required total experience</Name>
+                <Name>REQUIRED TOTAL EXPERIENCE</Name>
                 <Description>Required total project experience</Description>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:MinimumYearsExperience</Term>
                     <Name>Minimum years experience</Name>
                     <Description>Minimum years of experience</Description>
+                    <DataType>Numeric</DataType>
                     <Value type="EXAMPLE">2</Value>
                     <Reference type="RULE">EHF-CV-REQ-R004</Reference>
                 </Element>
@@ -714,6 +817,7 @@
                     <Term>cv-req:MaximumYearsExperience</Term>
                     <Name>Maximum years experience</Name>
                     <Description>Maximum years of experience</Description>
+                    <DataType>Numeric</DataType>
                     <Value type="EXAMPLE">6</Value>
                     <Reference type="RULE">EHF-CV-REQ-R004</Reference>
                 </Element>
@@ -721,13 +825,14 @@
 
             <Element cardinality="0..1">
                 <Term>cv-req:Period</Term>
-                <Name>Period</Name>
+                <Name>PERIOD</Name>
                 <Description>Period for the project experience</Description>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:StartDate</Term>
                     <Name>Start date</Name>
                     <Description>The start of the ProjectExperience period. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
                     <Value type="EXAMPLE">2023-01-10</Value>
                     <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                     <Reference type="RULE">EHF-COMMON-R031</Reference>
@@ -737,6 +842,7 @@
                     <Term>cv-req:EndDate</Term>
                     <Name>End date</Name>
                     <Description>The end of the ProjectExperience period. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
                     <Value type="EXAMPLE">2024-12-31</Value>
                     <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                     <Reference type="RULE">EHF-COMMON-R031</Reference>
@@ -745,13 +851,14 @@
 
             <Element cardinality="0..1">
                 <Term>cv-req:ExperienceDescription</Term>
-                <Name>Experience description</Name>
+                <Name>EXPERIENCE DESCRIPTION</Name>
                 <Description>Description of the project experience</Description>
 
                 <Element>
                     <Term>cv-req:PositionPercent</Term>
                     <Name>Position percent</Name>
                     <Description>Percent of the position relevant for the experience</Description>
+                    <DataType>Percentage</DataType>
                     <Value type="EXAMPLE">100</Value>
                     <Reference type="RULE">EHF-CV-REQ-R005</Reference>
                 </Element>
@@ -759,7 +866,8 @@
                 <Element cardinality="0..1">
                     <Term>cv-req:Role</Term>
                     <Name>Role</Name>
-                    <Description>The candidates role in the project</Description>
+                    <Description>The candidates role in the project according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">styrk98</Reference>
                     <Value type="EXAMPLE">2130110</Value>
                 </Element>
@@ -768,24 +876,26 @@
                     <Term>cv-req:Activities</Term>
                     <Name>Activities</Name>
                     <Description>Description of activities performed</Description>
+                    <DataType>Text</DataType>
                     <Value type="EXAMPLE">Must coordinate companies web-portal.</Value>
                 </Element>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:ExperienceValue</Term>
-                <Name>Experience value</Name>
+                <Name>EXPERIENCE VALUE</Name>
                 <Description>Value of the project experience</Description>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:ProjectParticipation</Term>
                     <Name>Project participation</Name>
                     <Description>Length of the project experience</Description>
+                    <DataType>Quantity</DataType>
                     <Value type="EXAMPLE">40</Value>
                     <Reference type="RULE">EHF-CV-REQ-R006</Reference>
 
                     <Attribute>
-                        <Term>unitOfMeasure</Term>
+                        <Term>unitCode</Term>
                         <Name>Unit of measure</Name>
                         <Value type="EXAMPLE">MON</Value>
                     </Attribute>
@@ -795,12 +905,14 @@
                     <Term>cv-req:ProjectSize</Term>
                     <Name>Project size</Name>
                     <Description>Size of the project</Description>
+                    <DataType>Quantity</DataType>
                     <Value type="EXAMPLE">5</Value>
+                    <Reference type="RULE">EHF-CV-REQ-R007</Reference>
 
                     <Attribute>
-                        <Term>unitOfMeasure</Term>
+                        <Term>unitCode</Term>
                         <Name>Unit of measure</Name>
-                        <Value type="EXAMPLE">YEAR</Value>
+                        <Value type="EXAMPLE">ANN</Value>
                     </Attribute>
                 </Element>
 
@@ -808,7 +920,9 @@
                     <Term>cv-req:ProjectValue</Term>
                     <Name>Project value</Name>
                     <Description>Value of the project in money</Description>
+                    <DataType>Amount</DataType>
                     <Value type="EXAMPLE">1500000</Value>
+                    <Reference type="RULE">EHF-CV-REQ-R008</Reference>
 
                     <Attribute>
                         <Term>currencyID</Term>
@@ -828,6 +942,7 @@
                     <Term>cv-req:ID</Term>
                     <Name>Identification</Name>
                     <Description>ID for project experience</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">1</Value>
                 </Element>
 
@@ -835,6 +950,7 @@
                     <Term>cv-req:Requirement</Term>
                     <Name>Requirement</Name>
                     <Description>Legal values: must or should</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">requirement</Reference>
                     <Value type="EXAMPLE">should</Value>
                 </Element>
@@ -843,6 +959,7 @@
                     <Term>cv-req:ExperienceType</Term>
                     <Name>Experience type</Name>
                     <Description>Type of project experience according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">styrk98</Reference>
                     <Value type="EXAMPLE">2130111</Value>
                 </Element>
@@ -851,6 +968,7 @@
                     <Term>cv-req:IndustryType</Term>
                     <Name>Industry type</Name>
                     <Description>Type of industry according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">NACE</Reference>
                     <Value type="EXAMPLE">62010</Value>
                 </Element>
@@ -859,6 +977,7 @@
                     <Term>cv-req:Workplace</Term>
                     <Name>Work place</Name>
                     <Description>Country code according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">ISO3166</Reference>
                     <Value type="EXAMPLE">FR</Value>
                 </Element>
@@ -866,9 +985,144 @@
                 <Element cardinality="0..1">
                     <Term>cv-req:JobSector</Term>
                     <Name>Job sector</Name>
-                    <Description>Private, public or other</Description>
+                    <Description>Private, public or other according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">sector</Reference>
-                    <Value type="EXAMPLE">Private</Value>
+                    <Value type="EXAMPLE">private</Value>
+                </Element>
+
+                <Element cardinality="0..1">
+                    <Term>cv-req:RequiredTotalExperience</Term>
+                    <Name>REQUIRED TOTAL EXPERIENCE</Name>
+                    <Description>Required total project experience</Description>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:MinimumYearsExperience</Term>
+                        <Name>Minimum years experience</Name>
+                        <Description>Minimum years of experience</Description>
+                        <DataType>Numeric</DataType>
+                        <Value type="EXAMPLE">2</Value>
+                        <Reference type="RULE">EHF-CV-REQ-R004</Reference>
+                    </Element>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:MaximumYearsExperience</Term>
+                        <Name>Maximum years experience</Name>
+                        <Description>Maximum years of experience</Description>
+                        <DataType>Numeric</DataType>
+                        <Value type="EXAMPLE">6</Value>
+                        <Reference type="RULE">EHF-CV-REQ-R004</Reference>
+                    </Element>
+                </Element>
+
+                <Element cardinality="0..1">
+                    <Term>cv-req:Period</Term>
+                    <Name>PERIOD</Name>
+                    <Description>Period for the project experience</Description>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:StartDate</Term>
+                        <Name>Start date</Name>
+                        <Description>The start of the ProjectExperience period. Format "YYYY-MM-DD"</Description>
+                        <DataType>Date</DataType>
+                        <Value type="EXAMPLE">2023-01-10</Value>
+                        <Reference type="RULE">EHF-CV-REQ-R002</Reference>
+                        <Reference type="RULE">EHF-COMMON-R031</Reference>
+                    </Element>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:EndDate</Term>
+                        <Name>End date</Name>
+                        <Description>The end of the ProjectExperience period. Format "YYYY-MM-DD"</Description>
+                        <DataType>Date</DataType>
+                        <Value type="EXAMPLE">2024-12-31</Value>
+                        <Reference type="RULE">EHF-CV-REQ-R002</Reference>
+                        <Reference type="RULE">EHF-COMMON-R031</Reference>
+                    </Element>
+                </Element>
+
+                <Element cardinality="0..1">
+                    <Term>cv-req:ExperienceDescription</Term>
+                    <Name>EXPERIENCE DESCRIPTION</Name>
+                    <Description>Description of the project experience</Description>
+
+                    <Element>
+                        <Term>cv-req:PositionPercent</Term>
+                        <Name>Position percent</Name>
+                        <Description>Percent of the position relevant for the experience</Description>
+                        <DataType>Percentage</DataType>
+                        <Value type="EXAMPLE">100</Value>
+                        <Reference type="RULE">EHF-CV-REQ-R005</Reference>
+                    </Element>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:Role</Term>
+                        <Name>Role</Name>
+                        <Description>The candidates role in the project according to code list</Description>
+                        <DataType>Code</DataType>
+                        <Reference type="CODE_LIST">styrk98</Reference>
+                        <Value type="EXAMPLE">2130114</Value>
+                    </Element>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:Activities</Term>
+                        <Name>Activities</Name>
+                        <Description>Description of activities performed</Description>
+                        <DataType>Text</DataType>
+                        <Value type="EXAMPLE">Developing IT-system.</Value>
+                    </Element>
+                </Element>
+
+                <Element cardinality="0..1">
+                    <Term>cv-req:ExperienceValue</Term>
+                    <Name>EXPERIENCE VALUE</Name>
+                    <Description>Value of the project experience</Description>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:ProjectParticipation</Term>
+                        <Name>Project participation</Name>
+                        <Description>Length of the project experience</Description>
+                        <DataType>Quantity</DataType>
+                        <Value type="EXAMPLE">5</Value>
+                        <Reference type="RULE">EHF-CV-REQ-R006</Reference>
+
+                        <Attribute>
+                            <Term>unitCode</Term>
+                            <Name>Unit of measure</Name>
+                            <Value type="EXAMPLE">MON</Value>
+                        </Attribute>
+                    </Element>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:ProjectSize</Term>
+                        <Name>Project size</Name>
+                        <Description>Size of the project</Description>
+                        <DataType>Quantity</DataType>
+                        <Value type="EXAMPLE">15</Value>
+                        <Reference type="RULE">EHF-CV-REQ-R007</Reference>
+
+                        <Attribute>
+                            <Term>unitCode</Term>
+                            <Name>Unit of measure</Name>
+                            <Value type="EXAMPLE">MON</Value>
+                        </Attribute>
+                    </Element>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:ProjectValue</Term>
+                        <Name>Project value</Name>
+                        <Description>Value of the project in money</Description>
+                        <DataType>Amount</DataType>
+                        <Value type="EXAMPLE">1500000</Value>
+                        <Reference type="RULE">EHF-CV-REQ-R008</Reference>
+
+                        <Attribute>
+                            <Term>currencyID</Term>
+                            <Name>Currency</Name>
+                            <Reference type="CODE_LIST">ISO4217</Reference>
+                            <Value type="EXAMPLE">NOK</Value>
+                        </Attribute>
+                    </Element>
                 </Element>
             </Element>
         </Element>
@@ -882,6 +1136,7 @@
                 <Term>cv-req:ID</Term>
                 <Name>Identification</Name>
                 <Description>ID for work experience</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
@@ -889,6 +1144,7 @@
                 <Term>cv-req:Requirement</Term>
                 <Name>Requirement</Name>
                 <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
                 <Value type="EXAMPLE">should</Value>
             </Element>
@@ -897,14 +1153,16 @@
                 <Term>cv-req:PositionLevel</Term>
                 <Name>Position level</Name>
                 <Description>Level of position according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">PositionLevel</Reference>
-                <Value type="EXAMPLE">1</Value>
+                <Value type="EXAMPLE">employee</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:IndustryType</Term>
                 <Name>Industry type</Name>
                 <Description>Type of industry according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">NACE</Reference>
                 <Value type="EXAMPLE">62010</Value>
             </Element>
@@ -913,6 +1171,7 @@
                 <Term>cv-req:Workplace</Term>
                 <Name>Work place</Name>
                 <Description>Country code according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">ISO3166</Reference>
                 <Value type="EXAMPLE">FR</Value>
             </Element>
@@ -920,27 +1179,30 @@
             <Element cardinality="0..1">
                 <Term>cv-req:JobSector</Term>
                 <Name>Job sector</Name>
-                <Description>Private, public or other</Description>
+                <Description>Private, public or other according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">sector</Reference>
-                <Value type="EXAMPLE">Private</Value>
+                <Value type="EXAMPLE">private</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:MinimumYearsExperience</Term>
                 <Name>Minimum years experience</Name>
                 <Description>Minimum years of experience</Description>
+                <DataType>Numeric</DataType>
                 <Value type="EXAMPLE">2</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:Period</Term>
-                <Name>Period</Name>
+                <Name>PERIOD</Name>
                 <Description>Period for the work experience</Description>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:StartDate</Term>
                     <Name>Start date</Name>
                     <Description>The start of the WorkExperience period. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
                     <Value type="EXAMPLE">2023-01-10</Value>
                     <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                     <Reference type="RULE">EHF-COMMON-R031</Reference>
@@ -950,6 +1212,7 @@
                     <Term>cv-req:EndDate</Term>
                     <Name>End date</Name>
                     <Description>The end of the WorkExperience period. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
                     <Value type="EXAMPLE">2024-12-31</Value>
                     <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                     <Reference type="RULE">EHF-COMMON-R031</Reference>
@@ -958,13 +1221,14 @@
 
             <Element cardinality="0..1">
                 <Term>cv-req:WorkExperienceDescription</Term>
-                <Name>Work experience description</Name>
+                <Name>WORK EXPERIENCE DESCRIPTION</Name>
                 <Description>Description of the work experience</Description>
 
-                <Element cardinality="0..1">
+                <Element>
                     <Term>cv-req:PositionPercent</Term>
                     <Name>Position percent</Name>
                     <Description>Percent of the position relevant for the experience</Description>
+                    <DataType>Percentage</DataType>
                     <Value type="EXAMPLE">100</Value>
                     <Reference type="RULE">EHF-CV-REQ-R005</Reference>
                 </Element>
@@ -972,7 +1236,8 @@
                 <Element cardinality="0..1">
                     <Term>cv-req:Role</Term>
                     <Name>Role</Name>
-                    <Description>The candidates role in the project</Description>
+                    <Description>The candidates role in the position according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">styrk98</Reference>
                     <Value type="EXAMPLE">2130163</Value>
                 </Element>
@@ -981,6 +1246,7 @@
                     <Term>cv-req:Activities</Term>
                     <Name>Activities</Name>
                     <Description>Description of activities performed</Description>
+                    <DataType>Text</DataType>
                     <Value type="EXAMPLE">Testing and developing IT-systems in X company</Value>
                 </Element>
             </Element>
@@ -994,6 +1260,7 @@
                     <Term>cv-req:ID</Term>
                     <Name>Identification</Name>
                     <Description>ID for work experience</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">1</Value>
                 </Element>
 
@@ -1001,6 +1268,7 @@
                     <Term>cv-req:Requirement</Term>
                     <Name>Requirement</Name>
                     <Description>Legal values: must or should</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">requirement</Reference>
                     <Value type="EXAMPLE">should</Value>
                 </Element>
@@ -1009,14 +1277,16 @@
                     <Term>cv-req:PositionLevel</Term>
                     <Name>Position level</Name>
                     <Description>Level of position according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">PositionLevel</Reference>
-                    <Value type="EXAMPLE">Managers</Value>
+                    <Value type="EXAMPLE">manager</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:IndustryType</Term>
                     <Name>Industry type</Name>
                     <Description>Type of industry according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">NACE</Reference>
                     <Value type="EXAMPLE">62010</Value>
                 </Element>
@@ -1025,6 +1295,7 @@
                     <Term>cv-req:Workplace</Term>
                     <Name>Work place</Name>
                     <Description>Country code according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">ISO3166</Reference>
                     <Value type="EXAMPLE">FR</Value>
                 </Element>
@@ -1032,27 +1303,30 @@
                 <Element cardinality="0..1">
                     <Term>cv-req:JobSector</Term>
                     <Name>Job sector</Name>
-                    <Description>Private, public or other</Description>
+                    <Description>Private, public or other according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">sector</Reference>
-                    <Value type="EXAMPLE">Private</Value>
+                    <Value type="EXAMPLE">private</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:MinimumYearsExperience</Term>
                     <Name>Minimum years experience</Name>
                     <Description>Minimum years of experience</Description>
+                    <DataType>Numeric</DataType>
                     <Value type="EXAMPLE">2</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Period</Term>
-                    <Name>Period</Name>
+                    <Name>PERIOD</Name>
                     <Description>Period for the work experience</Description>
 
                     <Element cardinality="0..1">
                         <Term>cv-req:StartDate</Term>
                         <Name>Start date</Name>
                         <Description>The start of the WorkExperience period. Format "YYYY-MM-DD"</Description>
+                        <DataType>Date</DataType>
                         <Value type="EXAMPLE">2023-01-10</Value>
                         <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                         <Reference type="RULE">EHF-COMMON-R031</Reference>
@@ -1062,6 +1336,7 @@
                         <Term>cv-req:EndDate</Term>
                         <Name>End date</Name>
                         <Description>The end of the WorkExperience period. Format "YYYY-MM-DD"</Description>
+                        <DataType>Date</DataType>
                         <Value type="EXAMPLE">2024-12-31</Value>
                         <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                         <Reference type="RULE">EHF-COMMON-R031</Reference>
@@ -1070,13 +1345,14 @@
 
                 <Element cardinality="0..1">
                     <Term>cv-req:WorkExperienceDescription</Term>
-                    <Name>Work experience description</Name>
+                    <Name>WORK EXPERIENCE DESCRIPTION</Name>
                     <Description>Description of the work experience</Description>
 
-                    <Element cardinality="0..1">
+                    <Element>
                         <Term>cv-req:PositionPercent</Term>
                         <Name>Position percent</Name>
                         <Description>Percent of the position relevant for the experience</Description>
+                        <DataType>Percentage</DataType>
                         <Value type="EXAMPLE">100</Value>
                         <Reference type="RULE">EHF-CV-REQ-R005</Reference>
                     </Element>
@@ -1084,7 +1360,8 @@
                     <Element cardinality="0..1">
                         <Term>cv-req:Role</Term>
                         <Name>Role</Name>
-                        <Description>The candidates role in the project</Description>
+                        <Description>The candidates role in the position according to code list</Description>
+                        <DataType>Code</DataType>
                         <Reference type="CODE_LIST">styrk98</Reference>
                         <Value type="EXAMPLE">2130163</Value>
                     </Element>
@@ -1093,6 +1370,7 @@
                         <Term>cv-req:Activities</Term>
                         <Name>Activities</Name>
                         <Description>Description of activities performed</Description>
+                        <DataType>Text</DataType>
                         <Value type="EXAMPLE">Testing and developing IT-systems in X company</Value>
                     </Element>
                 </Element>
@@ -1108,6 +1386,7 @@
                 <Term>cv-req:ID</Term>
                 <Name>Identification</Name>
                 <Description>ID for Skills</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
@@ -1115,6 +1394,7 @@
                 <Term>cv-req:Requirement</Term>
                 <Name>Requirement</Name>
                 <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
                 <Value type="EXAMPLE">should</Value>
             </Element>
@@ -1122,16 +1402,17 @@
             <Element cardinality="0..1">
                 <Term>cv-req:Type</Term>
                 <Name>Type</Name>
-                <Description>Type of skills</Description>
+                <Description>Type of skills according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">SkillsType</Reference>
-                <Value type="EXAMPLE">Java</Value>
-<!--                <Reference type="RULE">EHF-CV-REQ-R011</Reference>-->
+                <Value type="EXAMPLE">java</Value>
             </Element>
 
             <Element cardinality="0..1">
-                <Term>cv-req:Version</Term>
+                <Term>cv-req:VersionID</Term>
                 <Name>Version</Name>
                 <Description>Version of skill</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">9</Value>
             </Element>
 
@@ -1139,6 +1420,7 @@
                 <Term>cv-req:LastPractice</Term>
                 <Name>Last practice</Name>
                 <Description>Date for last practice of the skill. Format "YYYY-MM-DD"</Description>
+                <DataType>Date</DataType>
                 <Value type="EXAMPLE">2023-01-10</Value>
                 <Reference type="RULE">EHF-COMMON-R031</Reference>
             </Element>
@@ -1147,11 +1429,12 @@
                 <Term>cv-req:MinimumLengthPractice</Term>
                 <Name>Minimum length of practice</Name>
                 <Description>Minimum length of practice including unit of measure</Description>
+                <DataType>Quantity</DataType>
                 <Value type="EXAMPLE">5</Value>
                 <Reference type="RULE">EHF-CV-REQ-R012</Reference>
 
                 <Attribute>
-                    <Term>unitOfMeasure</Term>
+                    <Term>unitCode</Term>
                     <Name>Unit of measure</Name>
                     <Value type="EXAMPLE">MON</Value>
                 </Attribute>
@@ -1160,8 +1443,8 @@
             <Element cardinality="0..1">
                 <Term>cv-req:SkillsReference</Term>
                 <Name>Skills reference</Name>
-                <Description>To specify the need for a reference/contact person (true or false)</Description>
-                <Reference type="CODE_LIST">SkillReference</Reference>
+                <Description>To specify the need for a reference/contact person. true or false</Description>
+                <DataType>Indicator</DataType>
                 <Value type="EXAMPLE">true</Value>
             </Element>
 
@@ -1174,6 +1457,7 @@
                     <Term>cv-req:ID</Term>
                     <Name>Identification</Name>
                     <Description>ID for Skills</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">1</Value>
                 </Element>
 
@@ -1181,6 +1465,7 @@
                     <Term>cv-req:Requirement</Term>
                     <Name>Requirement</Name>
                     <Description>Legal values: must or should</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">requirement</Reference>
                     <Value type="EXAMPLE">must</Value>
                 </Element>
@@ -1188,16 +1473,17 @@
                 <Element cardinality="0..1">
                     <Term>cv-req:Type</Term>
                     <Name>Type</Name>
-                    <Description>Type of skills</Description>
+                    <Description>Type of skills according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">SkillsType</Reference>
-                    <Value type="EXAMPLE">Java</Value>
-                   <!-- <Reference type="RULE">EHF-CV-REQ-R011</Reference>-->
+                    <Value type="EXAMPLE">java</Value>
                 </Element>
 
                 <Element cardinality="0..1">
-                    <Term>cv-req:Version</Term>
+                    <Term>cv-req:VersionID</Term>
                     <Name>Version</Name>
                     <Description>Version of skill</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">8</Value>
                 </Element>
 
@@ -1205,6 +1491,7 @@
                     <Term>cv-req:LastPractice</Term>
                     <Name>Last practice</Name>
                     <Description>Date for last practice of the skill. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
                     <Value type="EXAMPLE">2023-01-10</Value>
                     <Reference type="RULE">EHF-COMMON-R031</Reference>
                 </Element>
@@ -1213,11 +1500,12 @@
                     <Term>cv-req:MinimumLengthPractice</Term>
                     <Name>Minimum length of practice</Name>
                     <Description>Minimum length of practice including unit of measure</Description>
+                    <DataType>Quantity</DataType>
                     <Value type="EXAMPLE">5</Value>
                     <Reference type="RULE">EHF-CV-REQ-R012</Reference>
 
                     <Attribute>
-                        <Term>unitOfMeasure</Term>
+                        <Term>unitCode</Term>
                         <Name>Unit of measure</Name>
                         <Value type="EXAMPLE">MON</Value>
                     </Attribute>
@@ -1226,10 +1514,9 @@
                 <Element cardinality="0..1">
                     <Term>cv-req:SkillsReference</Term>
                     <Name>Skills reference</Name>
-                    <Description>To specify the need for a reference/contact person (true or false)</Description>
-                    <Reference type="CODE_LIST">SkillReference</Reference>
+                    <Description>To specify the need for a reference/contact person. true or false</Description>
+                    <DataType>Indicator</DataType>
                     <Value type="EXAMPLE">true</Value>
-                 
                 </Element>
             </Element>
         </Element>
@@ -1243,6 +1530,7 @@
                 <Term>cv-req:ID</Term>
                 <Name>Identification</Name>
                 <Description>ID for Clearance</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
@@ -1250,6 +1538,7 @@
                 <Term>cv-req:Requirement</Term>
                 <Name>Requirement</Name>
                 <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
                 <Value type="EXAMPLE">must</Value>
             </Element>
@@ -1258,6 +1547,8 @@
                 <Term>cv-req:Level</Term>
                 <Name>Level</Name>
                 <Description>Level of clearance according to code list</Description>
+                <DataType>Code</DataType>
+                <Reference type="CODE_LIST">ClearanceLevel</Reference>
                 <Value type="EXAMPLE">SECRET</Value>
             </Element>
 
@@ -1265,6 +1556,7 @@
                 <Term>cv-req:ExpirationDate</Term>
                 <Name>Expiration date</Name>
                 <Description>Expiration date for the clearance. Format "YYYY-MM-DD"</Description>
+                <DataType>Date</DataType>
                 <Value type="EXAMPLE">2024-12-31</Value>
                 <Reference type="RULE">EHF-COMMON-R031</Reference>
             </Element>

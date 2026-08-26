@@ -14,7 +14,7 @@ All courses need to be identified uniquely to ensure that the course can be refe
 CV. The element `cv-req:Requirement` shall be used to differentiate between courses that *should* and *must* be present. The Economic Operators
 will only provide qualified candidates, and this makes it easier to do the rating.
 
-In course requirement, the Contacting Authority can specify which period (`cv-req:Period`) the candidate must finish the course. This can
+In course requirement, the Contracting Authority can specify which period (`cv-req:Period`) the candidate must finish the course. This can
 be a date in the future. 
 
 .Example of the requested course in the CV request
@@ -43,8 +43,6 @@ include::../{snippet-dir-cv-request}/cv-request.xml[tags=CourseAlternative]
 
 Based on the course requirement, the Economic Operator needs to document the candidate's courses.
 
-The element `cv:CourseReference` must correspond to the course requirement in the CV request.
-
 It is possible to state information about the supplier of the course. This might be relevant for some Contracting
 Authorities, since different suppliers may offer the same course with different content.
 
@@ -59,7 +57,7 @@ include::../{snippet-dir-cv}/cv.xml[tags=Course]
 <4> Information about the supplier of the course
 <5> The supplier's organisation number. schemeID according to codelist Electronic address identifier (EAID)
 <6> The legal name of supplier
-<7> Contact information of supplier expressed as email address
-<8> The country where the supplier is registered - expressed as country code from the codelist
+<7> The country where the supplier is registered - expressed as country code from the codelist
+<8> Contact information of supplier expressed as email address
 <9> Embedded document as binary object with `mimeCode`. Use Base64.
 <10> URI to course document

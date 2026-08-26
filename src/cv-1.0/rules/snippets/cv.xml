@@ -4,7 +4,7 @@
   <cv:CustomizationID>urn:fdc:anskaffelser.no:2019:ehf:cv:1</cv:CustomizationID><!--1-->
   <cv:ProfileID>urn:fdc:anskaffelser.no:2019:ehf-cv:1</cv:ProfileID><!--2-->
   <cv:ID>4b2fd73e-f9c8-4465-8e63-4c5edae48057</cv:ID><!--3-->
-  <cv:Role>Developer</cv:Role><!--4-->
+  <cv:RoleDescription>Developer</cv:RoleDescription><!--4-->
   <cv:IssueDate>2024-02-02</cv:IssueDate><!--5-->
   <cv:IssueTime>08:30:00</cv:IssueTime><!--6-->
   <!-- end::Header[] -->
@@ -13,7 +13,9 @@
   <cv:SenderParty>
     <cv:Party>
     <cv:EndpointID schemeID="0192">987654325</cv:EndpointID><!--1-->
-    <cv:Name>Y company</cv:Name>
+    <cv:PartyName>
+      <cv:Name>Y company</cv:Name>
+    </cv:PartyName>
     <cv:Contact>
       <cv:Name>John Johnsen</cv:Name>
       <cv:Telephone>99998888</cv:Telephone>
@@ -27,7 +29,9 @@
   <cv:ReceiverParty>
     <cv:Party>
     <cv:EndpointID schemeID="0192">987654325</cv:EndpointID><!--1-->
-    <cv:Name>X company</cv:Name>
+    <cv:PartyName>
+      <cv:Name>X company</cv:Name>
+    </cv:PartyName>
     <cv:Contact>
       <cv:Name>Ola Nordmann</cv:Name>
       <cv:Telephone>22221111</cv:Telephone>
@@ -59,7 +63,9 @@
     </cv:Period>
     <cv:Documentation>
       <cv:EmbeddedDocumentBinaryObject mimeCode="application/pdf">YmFjaGVsb3IgbnVyc2U=</cv:EmbeddedDocumentBinaryObject><!--5-->
-      <cv:URI>https://www.vitnemalsportalen.no</cv:URI><!--6-->
+      <cv:ExternalReference>
+        <cv:URI>https://www.vitnemalsportalen.no</cv:URI><!--6-->
+      </cv:ExternalReference>
     </cv:Documentation>
     <cv:Contact><!--7-->
       <cv:Name>Ola Nordmann</cv:Name>
@@ -81,16 +87,24 @@
     <cv:SupplierParty><!--4-->
       <cv:Party>
       <cv:EndpointID schemeID="0192">123456785</cv:EndpointID><!--5-->
-      <cv:Name>X company</cv:Name><!--6-->
-        <cv:CountryCode>ES</cv:CountryCode><!--8-->
+      <cv:PartyName>
+        <cv:Name>X company</cv:Name><!--6-->
+      </cv:PartyName>
+      <cv:PostalAddress>
+        <cv:Country>
+          <cv:IdentificationCode>ES</cv:IdentificationCode><!--7-->
+        </cv:Country>
+      </cv:PostalAddress>
       <cv:Contact>
-        <cv:ElectronicMail>ola.nordmann@xcompany.no</cv:ElectronicMail><!--7-->
+        <cv:ElectronicMail>ola.nordmann@xcompany.no</cv:ElectronicMail><!--8-->
       </cv:Contact>
         </cv:Party>
     </cv:SupplierParty>
     <cv:Documentation>
-      <cv:EmbeddedDocumentBinaryObject mimeCode="application/pdf">cHl0aG9uIGNvdXJzZSB4eXo===</cv:EmbeddedDocumentBinaryObject><!--9-->
-      <cv:URI>https://www.kurssportalen.no/</cv:URI><!--10-->
+      <cv:EmbeddedDocumentBinaryObject mimeCode="application/pdf">cHl0aG9uIGNvdXJzZSB4eXo=</cv:EmbeddedDocumentBinaryObject><!--9-->
+      <cv:ExternalReference>
+        <cv:URI>https://www.kurssportalen.no/</cv:URI><!--10-->
+      </cv:ExternalReference>
     </cv:Documentation>
   </cv:Course>
   <!-- end::Course[] -->
@@ -99,21 +113,29 @@
   <cv:Certification>
     <cv:ID>1</cv:ID><!--1-->
     <cv:Title>archimate</cv:Title><!--2-->
-    <cv:Version>3.0</cv:Version><!--3-->
+    <cv:VersionID>3.0</cv:VersionID><!--3-->
     <cv:ValidTo>2020-05-05</cv:ValidTo><!--4-->
     <cv:SupplierParty><!--5-->
       <cv:Party>
       <cv:EndpointID schemeID="0192">123456785</cv:EndpointID><!--6-->
-      <cv:Name>U company</cv:Name><!--7-->
-        <cv:CountryCode>NO</cv:CountryCode><!--9-->
+      <cv:PartyName>
+        <cv:Name>U company</cv:Name><!--7-->
+      </cv:PartyName>
+      <cv:PostalAddress>
+        <cv:Country>
+          <cv:IdentificationCode>NO</cv:IdentificationCode><!--8-->
+        </cv:Country>
+      </cv:PostalAddress>
       <cv:Contact>
-        <cv:ElectronicMail>company@u.no</cv:ElectronicMail><!--8-->
+        <cv:ElectronicMail>company@u.no</cv:ElectronicMail><!--9-->
       </cv:Contact>
       </cv:Party>
     </cv:SupplierParty>
     <cv:Documentation>
       <cv:EmbeddedDocumentBinaryObject mimeCode="application/pdf">YXJjaGltYXRlIGNlcnRpZmljYXRpb24=</cv:EmbeddedDocumentBinaryObject><!--10-->
-      <cv:URI>https://www.sertifiseringsportalen.no/</cv:URI><!--11-->
+      <cv:ExternalReference>
+        <cv:URI>https://www.sertifiseringsportalen.no/</cv:URI><!--11-->
+      </cv:ExternalReference>
     </cv:Documentation>
   </cv:Certification>
   <!-- end::Certification-1[] -->
@@ -125,13 +147,21 @@
     <cv:SupplierParty><!--4-->
       <cv:Party>
         <cv:EndpointID schemeID="0192">123456785</cv:EndpointID>
-     <cv:Name>Miljømerking Norge</cv:Name>
-      <cv:CountryCode>NO</cv:CountryCode>
+     <cv:PartyName>
+       <cv:Name>Miljømerking Norge</cv:Name>
+     </cv:PartyName>
+      <cv:PostalAddress>
+        <cv:Country>
+          <cv:IdentificationCode>NO</cv:IdentificationCode>
+        </cv:Country>
+      </cv:PostalAddress>
       </cv:Party>
     </cv:SupplierParty>
     <cv:Documentation>
      <cv:EmbeddedDocumentBinaryObject mimeCode="application/pdf">c2VydGlmaXNlcmluZyBkb2t1bWVudGFzam9uCg==</cv:EmbeddedDocumentBinaryObject><!--5-->
-      <cv:URI>http://www.svanemerket.no</cv:URI><!--6-->
+      <cv:ExternalReference>
+        <cv:URI>http://www.svanemerket.no</cv:URI><!--6-->
+      </cv:ExternalReference>
     </cv:Documentation>
   </cv:Certification>
   <!-- end::Certification-2[] -->
@@ -160,10 +190,12 @@
     <cv:Workplace>AI</cv:Workplace><!--4-->
     <cv:JobSector>private</cv:JobSector><!--5-->
     <cv:Company><!--6-->
-      <cv:Party>
-      <cv:EndpointID schemeID="0192">123456785</cv:EndpointID>
-      <cv:Name>AZ company</cv:Name>
-      </cv:Party>
+      <cv:PartyIdentification>
+        <cv:ID schemeID="0192">123456785</cv:ID>
+      </cv:PartyIdentification>
+      <cv:PartyName>
+        <cv:Name>AZ company</cv:Name>
+      </cv:PartyName>
     </cv:Company>
     <cv:Period><!--7-->
       <cv:StartDate>2005-01-01</cv:StartDate>
@@ -175,8 +207,8 @@
       <cv:Activities>Developing web portal for X company.</cv:Activities><!--10-->
     </cv:ExperienceDescription>
     <cv:ExperienceValue>
-      <cv:ProjectParticipation unitOfMeasure="MON">5</cv:ProjectParticipation><!--11-->
-      <cv:ProjectSize unitOfMeasure="MON">20</cv:ProjectSize><!--12-->
+      <cv:ProjectParticipation unitCode="MON">5</cv:ProjectParticipation><!--11-->
+      <cv:ProjectSize unitCode="MON">20</cv:ProjectSize><!--12-->
       <cv:ProjectValue currencyID="NOK">1500000</cv:ProjectValue><!--13-->
     </cv:ExperienceValue>
     <cv:Contact><!--14-->
@@ -191,15 +223,17 @@
   <!-- tag::WorkExperience[] -->
   <cv:WorkExperience>
     <cv:ID>1</cv:ID><!--1-->
-    <cv:PositionLevel>1</cv:PositionLevel><!--2-->
+    <cv:PositionLevel>employee</cv:PositionLevel><!--2-->
     <cv:IndustryType>72110</cv:IndustryType><!--3-->
     <cv:Workplace>CF</cv:Workplace><!--4-->
     <cv:JobSector>private</cv:JobSector><!--5-->
     <cv:Company><!--6-->
-    <cv:Party>
-      <cv:EndpointID schemeID="0192">123456785</cv:EndpointID>
-      <cv:Name>X company</cv:Name>
-      </cv:Party>
+      <cv:PartyIdentification>
+        <cv:ID schemeID="0192">123456785</cv:ID>
+      </cv:PartyIdentification>
+      <cv:PartyName>
+        <cv:Name>X company</cv:Name>
+      </cv:PartyName>
     </cv:Company>
     <cv:Period><!--7-->
       <cv:StartDate>2013-05-05</cv:StartDate>
@@ -223,9 +257,9 @@
   <cv:Skills>
     <cv:ID>1</cv:ID><!--1-->
     <cv:Type>java</cv:Type><!--2-->
-<!--    <cv:Version>11</cv:Version>-->
+<!--    <cv:VersionID>11</cv:VersionID>-->
     <cv:LastPractice>2020-05-05</cv:LastPractice><!--3-->
-    <cv:MinimumLengthPractice unitOfMeasure="MON">5</cv:MinimumLengthPractice><!--4-->
+    <cv:MinimumLengthPractice unitCode="MON">5</cv:MinimumLengthPractice><!--4-->
     <cv:Contact><!--5-->
       <cv:Name>Ola Nordmann</cv:Name>
       <cv:Role>1223122</cv:Role>
@@ -242,7 +276,9 @@
     <cv:ExpirationDate>2025-08-08</cv:ExpirationDate><!--3-->
     <cv:Documentation>
       <cv:EmbeddedDocumentBinaryObject mimeCode="application/pdf">Y2xlYXJhbmNlIGRvY3VtZW50YXRpb24=</cv:EmbeddedDocumentBinaryObject><!--4-->
-      <cv:URI>https://www.politiet.no/</cv:URI>
+      <cv:ExternalReference>
+        <cv:URI>https://www.politiet.no/</cv:URI><!--5-->
+      </cv:ExternalReference>
     </cv:Documentation>
   </cv:Clearance>
   <!-- end::Clearance[] -->
@@ -272,7 +308,9 @@
     <cv:Description>Chairman of the lawyers association for five years</cv:Description><!--3-->
     <cv:Documentation>
       <cv:EmbeddedDocumentBinaryObject mimeCode="application/pdf">YXBwcm92ZWQgZm9vdGJhbGwgcmVmZXJlZSBpbiBub3J3YXk=</cv:EmbeddedDocumentBinaryObject><!--4-->
-      <cv:URI>https://www.advokatforeningen.no/</cv:URI><!--5-->
+      <cv:ExternalReference>
+        <cv:URI>https://www.advokatforeningen.no/</cv:URI><!--5-->
+      </cv:ExternalReference>
     </cv:Documentation>
   </cv:AdditionalInformation>
   <!-- end::AdditionalInformation[] -->

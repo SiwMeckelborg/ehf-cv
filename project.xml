@@ -116,10 +116,6 @@
     </Resource>
     <Resource>
         <Type>CodeList-1</Type>
-        <Path>src/_common/codelist/reference.xml</Path>
-    </Resource>
-    <Resource>
-        <Type>CodeList-1</Type>
         <Path>src/_common/codelist/sector.xml</Path>
     </Resource>
     <Resource>

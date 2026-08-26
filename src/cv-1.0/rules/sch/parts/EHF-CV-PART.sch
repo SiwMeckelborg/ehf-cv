@@ -21,24 +21,32 @@
   </rule>-->
 
   <rule context="cv:ExperienceDescription | cv:WorkExperienceDescription">
+      <!-- PositionPercent er optional, assert kun dersom elementet finnes -->
       <assert id="EHF-CV-R004"
-              test="((cv:PositionPercent) &gt;= 0) and ((cv:PositionPercent) &lt;= 100)"
+              test="not(cv:PositionPercent) or (number(cv:PositionPercent) &gt;= 0 and number(cv:PositionPercent) &lt;= 100)"
               flag="fatal">Position percent shall be a greater than or equal zero, and less than or
               equal 100.</assert>
+
+      <!-- alle underelementene er optional i skjemaet, saa gruppen maa ikke vaere tom -->
+      <assert id="EHF-CV-R013"
+              test="cv:PositionPercent or cv:Role or cv:Activities"
+              flag="fatal">If an experience description is provided, at least one of position
+              percent, role or activities shall be stated.</assert>
   </rule>
 
   <rule context="cv:ExperienceValue">
 
+      <!-- alle tre elementene er optional, assert kun dersom elementet finnes -->
       <assert id="EHF-CV-R005"
-              test="number(cv:ProjectParticipation) &gt; 0"
+              test="not(cv:ProjectParticipation) or number(cv:ProjectParticipation) &gt; 0"
               flag="fatal">Project participation shall be greater than zero.</assert>
 
       <assert id="EHF-CV-R006"
-              test="number(cv:ProjectSize) &gt; 0"
+              test="not(cv:ProjectSize) or number(cv:ProjectSize) &gt; 0"
               flag="fatal">Project size shall be greater than zero.</assert>
 
       <assert id="EHF-CV-R007"
-              test="(cv:ProjectValue) &gt; 0"
+              test="not(cv:ProjectValue) or number(cv:ProjectValue) &gt; 0"
               flag="fatal">The project value shall be greater than zero.</assert>
   </rule>
 
@@ -46,8 +54,9 @@
 <!--      <assert id="EHF-CV-R009"
               test="(cv:Title) or (cv:Type)"
               flag="fatal">A skill shall include either a title or a type.</assert>-->
+      <!-- elementet er optional, assert kun dersom elementet finnes -->
       <assert id="EHF-CV-R010"
-              test="(cv:MinimumLengthPractice) &gt;= 0"
+              test="not(cv:MinimumLengthPractice) or number(cv:MinimumLengthPractice) &gt;= 0"
               flag="fatal">Minimum length of practice shall be a greater than or equal zero.</assert>
   </rule>
   

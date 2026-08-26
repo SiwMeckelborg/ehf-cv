@@ -16,8 +16,8 @@ In the table below you will find the values to be used as the specification iden
 [cols="3s,3a,3a", options="header"]
 |===
 | Type
-| Element `cbc:CustomizationID`
-| Element `cbc:ProfileID`
+| Element `cv:CustomizationID` / `cv-req:CustomizationID`
+| Element `cv:ProfileID` / `cv-req:ProfileID`
 
 | EHF CV Request
 |urn:fdc:anskaffelser.no:2019:ehf:cvrequest:1

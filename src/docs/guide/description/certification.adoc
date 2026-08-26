@@ -40,8 +40,6 @@ include::../{snippet-dir-cv-request}/cv-request.xml[tags=CertificationAlternativ
 
 Based on the certification requirement, the Economic Operator needs to document the candidate's certification.
 
-The element `cv:CertificationReference` must correspond to the certification requirement in the CV request.
-
 It is possible to state information about the supplier/issuer of the certification. This might be relevant for some Contracting Authorities, since different suppliers may offer the same certification with different content.
 
 .Example of a description of certification in CV as a response to a requested certification in CV request
@@ -56,7 +54,7 @@ include::../{snippet-dir-cv}/cv.xml[tags=Certification-1]
 <5> Information about the supplier/issuer of the certification.
 <6> The suppliers organisation number. schemeID according to codelist Electronic address identifier (EAID)
 <7> The legal name of the supplier.
-<8> Contact information for the supplier expressed as email address.
-<9> The country where the supplier is registered - expressed as country code from the codelist.
+<8> The country where the supplier is registered - expressed as country code from the codelist.
+<9> Contact information for the supplier expressed as email address.
 <10> Embedded document as binary object with `mimeCode`. Use Base64.
 <11> URI to certification document.
