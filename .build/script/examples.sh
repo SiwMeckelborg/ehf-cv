@@ -13,7 +13,7 @@ Release: $RELEASE
 Timestamp: $TIMESTAMP
 
 Repository for releases and issues:
-  https://github.com/anskaffelser/ehf-postaward-g3
+  https://github.com/anskaffelser/ehf-cv
 -->
 EOF
 
@@ -28,5 +28,5 @@ Release: $RELEASE
 Timestamp: $TIMESTAMP
 
 Repository for releases and issues:
-  https://github.com/anskaffelser/ehf-postaward-g3
+  https://github.com/anskaffelser/ehf-cv
 EOF
