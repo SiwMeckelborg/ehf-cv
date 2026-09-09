@@ -10,6 +10,10 @@ RULES_FOLDER := $(if $(RULES_FOLDER),$(RULES_FOLDER),rules)
 RULES_IDENT := $(if $(RULES_IDENT),$(RULES_IDENT),rules)
 BUILD = structure example schematron xsd xslt rules docs static
 .DEFAULT_GOAL = default
+rules_checked:
+	@$(MAKE) rules || (echo "Validator failed. Check target/validator output for details." && exit 1)
+check_docker:
+	@docker info >/dev/null 2>&1 || (echo "Docker is not running. Please start Docker and try again." && exit 1)
 define docker_pull
     echo "Pulling $(1) image..." && \
 	docker pull $(1)
@@ -20,10 +24,7 @@ define docker_run
 	@docker run --rm -i $(3) || touch $(PROJECT)/.failed
 	$(call scripts,$(1),post)
 	$(call fold_end,$(1))
-	@if [ -e $(PROJECT)/.failed ]; then \
-		rm $(PROJECT)/.failed; \
-		echo "\033[1;31mFailed\033[0m"; \
-	fi
+
 endef
 ifeq "${TRAVIS}" "true"
 define fold_end
@@ -61,7 +62,7 @@ default: pull build
 else
 default: clean build ownership
 endif
-build: env scripts_pre $(BUILD) scripts_post
+build: check_docker env scripts_pre $(BUILD) scripts_post docs_post
 RULE_CLEAN=$(shell (test -e $(PROJECT)/target && echo true) || echo false)
 clean:
 ifeq "$(RULE_CLEAN)" "true"
@@ -225,4 +226,4 @@ ifeq "$(RULE_EXAMPLE)" "true"
 else
 	$(call skip,example files)
 endif
-.PHONY: default build clean ownership serve pull env docs rules structure xsd xslt scripts_pre scripts_post docs_post static schematron example
+.PHONY: default build clean ownership serve pull env docs rules structure xsd xslt scripts_pre scripts_post docs_post static schematron example check_docker rules_checked
